@@ -13,7 +13,7 @@ int *ciz(int kacinci)
     {
         mlx = mlx_init();
         printf("\n\n\nmlx %s", (char *)mlx);
-        mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+        mlx_win = mlx_new_window(mlx, 1280, 1280, "Hello world!");
 
         //img.img_ptr = mlx_init();
         img.img_ptr = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);

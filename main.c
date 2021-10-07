@@ -6,11 +6,35 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/10/04 18:32:21 by adoner        ########   odam.nl         */
+/*   Updated: 2021/10/07 18:11:32 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_lang.h"
+
+void my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour)
+{
+	char *dst;
+	int offset;
+
+	offset = y * img->line_size + x * (img->bits_per_pixel / 8);
+	dst = img->address + offset;
+	*(unsigned int *)dst = colour;
+}
+void clean_old_image(t_vars *vars)
+{
+	
+	char *balik_path = "./fish_monster.xpm";
+	for(int i = 0; i<65;i++)
+	{
+		for (int y = 0; y<65;y++)
+			my_mlx_pixel_put(&vars->balik, i	, y, 0x000000);
+		
+			
+	}
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.y,vars->balik.x );
+	
+}
 
 int close_a(int keycode, t_vars *vars)
 {
@@ -20,6 +44,50 @@ int close_a(int keycode, t_vars *vars)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
 		exit(0);
+	}
+	//up
+	if (keycode == 126)
+	{
+		clean_old_image(vars);
+		if (vars->balik.x - 15 > vars->img.len_height)
+			vars->balik.x -= 15;
+		else if (vars->balik.x > vars->balik.len_height)
+			vars->balik.x = vars->img.len_height;
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.y,vars->balik.x );
+		printf("duvar %d", vars->img.len_height);
+	}
+	//down
+	if (keycode == 125)
+	{	
+		//clean_old_image(vars);
+		if (vars->balik.x + 15 + vars->balik.len_height < 1024 - 64)
+			vars->balik.x += 15;
+		else if (vars->balik.x + vars->balik.len_height < 1024 - 64)
+			vars->balik.x += 1024 - 64 - vars->balik.x - vars->balik.len_height;
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.y,vars->balik.x );
+		
+	}
+	//right
+	if (keycode == 124)
+	{
+		printf("\n\nright %d height %d\n\n",vars->balik.y,vars->balik.len_height);
+		//clean_old_image(vars);
+		if(vars->balik.y + 15 + vars->balik.len_height < 1024 - 64)
+			vars->balik.y +=15;
+		else if (vars->balik.y + vars->balik.len_height < 1024 - 64)
+			vars->balik.y += 1024 - 64 - vars->balik.y - vars->balik.len_height;
+		
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.y,vars->balik.x );
+	}
+	//left
+	if (keycode == 123)
+	{
+		//clean_old_image(vars);
+		if(vars->balik.y - 15 >  vars->img.len_height)
+			vars->balik.y -= 15;
+		else if (vars->balik.y > vars->img.len_height)
+			vars->balik.y = vars->img.len_height;
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.y,vars->balik.x );
 	}
 }
 
@@ -38,17 +106,18 @@ int close_a(int keycode, t_vars *vars)
 t_vars create_img(t_vars vars)
 {
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
+	vars.win = mlx_new_window(vars.mlx, 1024, 1024, "Hello world!");
 	return (vars);
 }
-void my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour)
-{
-	char *dst;
-	int offset;
 
-	offset = y * img->line_size + x * (img->bits_per_pixel / 8);
-	dst = img->address + offset;
-	*(unsigned int *)dst = colour;
+t_vars background_color(char *img_path, t_vars vars)
+{
+	vars.background.img_ptr = mlx_xpm_file_to_image(vars.mlx, img_path, &vars.background.img_width, &vars.background.len_height);
+	vars.background.address = mlx_get_data_addr(vars.background.img_ptr, &vars.background.bits_per_pixel, &vars.background.line_size,
+										 &vars.background.endian);
+	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img_ptr, 1024, 1024);
+
+	return (vars);
 }
 
 t_vars create_img_a(char *img_path, t_vars vars,int nerde)
@@ -61,9 +130,29 @@ t_vars create_img_a(char *img_path, t_vars vars,int nerde)
 		my_mlx_pixel_put(&vars.img, i	, 0, 0x0000FF);
 	}
 	
-	
-	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img_ptr, nerde * 20, nerde * 20);
+	printf("\n\n\nvar img %d %d \n\n",vars.img.len_height,vars.img.img_width);
+	//x left
+	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img_ptr, 0, nerde * 64);
+	//y up
+	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img_ptr,  nerde * 64,0);
+	//x right
+	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img_ptr,960 , nerde * 64);
+	// y down
+	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img_ptr,  nerde * 64,960);
 	return (vars);
+}
+
+
+
+t_vars  create_fish_img(char *img_path, t_vars vars, int yer)
+{
+	vars.balik.img_ptr = mlx_xpm_file_to_image(vars.mlx, img_path, &vars.balik.img_width, &vars.balik.len_height);
+	vars.balik.address = mlx_get_data_addr(vars.balik.img_ptr, &vars.balik.bits_per_pixel, &vars.balik.line_size,
+										 &vars.balik.endian);
+	vars.balik.x = yer;
+	vars.balik.y = 600;
+		mlx_put_image_to_window(vars.mlx, vars.win, vars.balik.img_ptr,yer , 600);
+		return (vars);
 }
 void start_draw(int fd, int kac_adim)
 {
@@ -72,8 +161,12 @@ void start_draw(int fd, int kac_adim)
 	int x;
 	int img_width, img_height;
 	char *relative_path = "./teapot.xpm";
+	char *balik_path = "./fish_monster.xpm";
 	t_vars vars;
+	int keycode; 
+	int yer;
 
+	yer = 600;
 	x = 0;
 	i = 1;
 	printf("afhajs2f\n\n\n");
@@ -85,13 +178,19 @@ void start_draw(int fd, int kac_adim)
 		printf("\n");
 		x++;
 	}
-	for (int i = 0; i < 50; i+=5)
+	for (int i = 0; i < 20; i++)
 	{
 		printf("i = %d \n",i);
 		vars = create_img_a(relative_path, vars,i);
 	}
+	vars = create_fish_img(balik_path,vars,yer);
 	mlx_key_hook(vars.win,close_a,&vars);
-	
+	if (keycode == 126)
+	{
+		printf("	eglkaf\n\n");
+		yer += 5;
+		keycode = mlx_key_hook(vars.win,close_a,&vars);
+	}
 	mlx_loop(vars.mlx);
 }
 

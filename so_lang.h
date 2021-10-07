@@ -15,11 +15,17 @@ typedef struct s_img
      int        len_height;
      int        img_width;
      int        endian; 
+     int        x;
+     int        y;
  }                t_img;
+
+
 
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
+    t_img   balik;
+    t_img   background;
     t_img   img;
 }				t_vars;
 
