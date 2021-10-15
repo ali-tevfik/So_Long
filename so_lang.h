@@ -27,6 +27,7 @@ typedef struct	s_vars {
     t_img   balik;
     t_img   background;
     t_img   walls;
+    t_img   exit;
     t_img   remove_old_chr;
 }				t_vars;
 
@@ -40,8 +41,9 @@ t_vars create_walls(char *img_path, t_vars vars,int nerde);
 int		check_up_down(char *data);
 int		check_left_right(char *data);
 void bilgi(t_vars *vars);
+ t_vars create_exit(char *img_path, t_vars vars,int nerde);
 t_vars create_win(t_vars vars);
-
+int check_exit(t_vars vars);
 void my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour);
 void	check_format(char *data);
 void	error_txt(char *error_txt);

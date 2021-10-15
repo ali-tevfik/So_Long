@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 20:35:41 by adoner        #+#    #+#                 */
-/*   Updated: 2021/10/08 22:11:19 by adoner        ########   odam.nl         */
+/*   Updated: 2021/10/11 18:44:54 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int close_a(int keycode, t_vars *vars)
 	if (keycode == 126)
 	{
 		bilgi(vars);
+		if (check_exit(*vars) == 0)
+			exit(1);
 		clean_old_image(vars);
 		if (vars->balik.x - 15 > vars->walls.len_height)
 			vars->balik.x -= 15;
@@ -42,7 +44,8 @@ int close_a(int keycode, t_vars *vars)
 	}
 	//down
 	if (keycode == 125)
-	{	
+	{	if (check_exit(*vars) == 0)
+			exit(1);
 		bilgi(vars);
 		clean_old_image(vars);
 		if (vars->balik.x + 15 + vars->balik.len_height < 1024 - 64)
@@ -54,7 +57,8 @@ int close_a(int keycode, t_vars *vars)
 	}
 	//right
 	if (keycode == 124)
-	{
+	{if (check_exit(*vars) == 0)
+			exit(1);
 		bilgi(vars);
 		clean_old_image(vars);
 		if(vars->balik.y + 15 + vars->balik.len_height < 1024 - 64)
@@ -66,7 +70,8 @@ int close_a(int keycode, t_vars *vars)
 	}
 	//left
 	if (keycode == 123)
-	{
+	{if (check_exit(*vars) == 0)
+			exit(1);
 		bilgi(vars);
 		clean_old_image(vars);
 		if(vars->balik.y - 15 >  vars->walls.len_height)
