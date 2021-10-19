@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/10/11 18:41:27 by adoner        ########   odam.nl         */
+/*   Updated: 2021/10/19 17:00:07 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,26 @@ void clean_old_image(t_vars *vars)
 	bilgi(vars);
 
     mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->balik.y, vars->balik.x );
-	
+
+	// //left up
+	// for(int i = 0; i < 32;i++)
+	// my_mlx_pixel_put(&vars->remove_old_chr,0,i,0XFFFFFF);
+	// mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->exit.x,vars->exit.y );
+
+	// // left down
+	// for(int i = 0; i < 32;i++)
+	// my_mlx_pixel_put(&vars->remove_old_chr,0,i,0XFFFFFF);
+	// mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->exit.x, vars->exit.y + vars->exit.len_height);
+
+	// //right up
+	// for(int i = 0; i < 32;i++)
+	// my_mlx_pixel_put(&vars->remove_old_chr,0,i,0XFFFFFF);
+	// mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->exit.x + 64 , vars->exit.y);
+
+	for(int i = 0; i < 32;i++)
+	my_mlx_pixel_put(&vars->remove_old_chr,i,0,0XFFFFFF);
+	mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->exit.x + 64, vars->exit.y + 64);
+
 }
 
 

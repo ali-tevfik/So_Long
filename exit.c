@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/11 18:38:23 by adoner        #+#    #+#                 */
-/*   Updated: 2021/10/15 22:24:01 by adoner        ########   odam.nl         */
+/*   Updated: 2021/10/19 16:45:35 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,21 @@
 										 &vars.exit.endian);
 	vars.exit.x = 250;
     vars.exit.y = 250;
+	// for (int i = 0;i < 10;i++)
+	// 	my_mlx_pixel_put(&vars.exit,i,i, 0XFFFFFF);
+	// for (int i = 64;i > 54;i--)
+	// 	my_mlx_pixel_put(&vars.exit,i,i, 0XDAF7A6 );
+	// for (int i = 64;i > 44;i-=2)
+	// 	my_mlx_pixel_put(&vars.exit,i,i/2, 0X581845);
+	// for (int i = 0;i < 40;i+=2)
+	// 	my_mlx_pixel_put(&vars.exit,i,i/2, 0XFF33FB);
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.exit.img_ptr, 250,250);
 	return (vars);
 }
 
 int check_exit(t_vars vars)
 {
-printf("\n walls %d\n",vars.walls.len_height);
-	printf("\n\nblok\n----------------------\nblok x  %d balik y %d\n",vars.exit.x ,vars.exit.y);
-	printf("\n\nbalik\n----------------------\nbalik x min = %d max %d\n",vars.balik.x,vars.balik.x);
-	printf("balik  y min = %d max %d\n\n",vars.balik.y,vars.balik.y);
-  if (((vars.balik.x < vars.exit.x +64) && (vars.balik.x > vars.exit.x - 64) ) && ((vars.balik.y  < vars.exit.y + 64 ) && (vars.balik.y > vars.exit.y - 64)))
-        return (0);
+	//check left
+	
     return (1);
 }
