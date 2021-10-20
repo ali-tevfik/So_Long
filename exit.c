@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/11 18:38:23 by adoner        #+#    #+#                 */
-/*   Updated: 2021/10/20 17:04:34 by adoner        ########   odam.nl         */
+/*   Updated: 2021/10/20 17:38:29 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,28 @@
 }
 
 // ik moet alles hoek chek
-int check_exit(t_vars vars)
+int check_exit(t_vars *vars, int keycode)
 {
-	printf("\n balik konum x  = %d-%dy = %d-%d\n",vars.balik.x,vars.balik.x + 32,vars.balik.y, vars.balik.y + 32);
-	printf("duvar konum x = %d-%d  y= %d-%d\n\n\n",vars.exit.x,vars.exit.x + 64,vars.exit.y,vars.exit.y + 64);
-	// allen left up chrachter check
-	if ((vars.balik.x > 249 || vars.balik.x + 32 > 249) && (vars.balik.x < 315 || vars.balik.x + 32 < 315))
+	//left
+	if (keycode == 123)
 	{
-		if ((vars.balik.y > 249  || vars.balik.y + 32 > 249) && (vars.balik.y < 315 || vars.balik.y + 32 < 315))
+		if(vars->exit.x + 64 > vars->balik.x && (vars->balik.y > 249 || vars->balik.y + 32 >249) && (vars->balik.y < 315 || vars->balik.y + 32 < 315))
+			return (0);
+	}
+	else if (keycode == 124)
+	{
+		if(vars->exit.x < vars->balik.x + 32 && (vars->balik.y > 249 || vars->balik.y + 32 >249) && (vars->balik.y < 315 || vars->balik.y + 32 < 315))
+			return (0);
+	}
+
+	else if (keycode == 125)
+	{
+		if(vars->exit.y < vars->balik.y + 32 && (vars->balik.x > 249 || vars->balik.x + 32 > 249) && (vars->balik.x < 315 || vars->balik.x + 32 < 315))
+			return (0);
+	}
+	else if (keycode == 126)
+	{
+		if (vars->exit.y + 64 > vars->balik.y && (vars->balik.x > 249 || vars->balik.x + 32 > 249) && (vars->balik.x < 315 || vars->balik.x + 32 < 315))
 			return (0);
 	}
     return (1);
@@ -62,7 +76,7 @@ int check_block(t_vars *vars, int keycode)
 		vars->balik.y += vars->game_speed;
 	else 
 		vars->balik.y -=  vars->game_speed;
-	int i = check_exit(*vars);
+	int i = check_exit(vars, keycode);
 	if (keycode == 123)
 			vars->balik.x +=vars->game_speed;
 		else if (keycode == 124)
@@ -72,10 +86,7 @@ int check_block(t_vars *vars, int keycode)
 		else
 			vars->balik.y += vars->game_speed;
 	if (i == 1)
-	{
-		printf("GIRDI\n");
 		return (0);
-		}
 	return (1);
 	
 }

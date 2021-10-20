@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/10/20 16:24:14 by adoner        ########   odam.nl         */
+/*   Updated: 2021/10/20 17:40:25 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,7 @@ void clean_old_image(t_vars *vars)
         }
         
     }
-   bilgi(vars);
-
     mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->balik.x, vars->balik.y );
-
-	// //left up
-	// for(int i = 0; i < 32;i++)
-	// my_mlx_pixel_put(&vars->remove_old_chr,0,i,0XFFFFFF);
-	// mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->exit.x,vars->exit.y );
-
-	// // left down
-	// for(int i = 0; i < 32;i++)
-	// my_mlx_pixel_put(&vars->remove_old_chr,0,i,0XFFFFFF);
-	// mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->exit.x, vars->exit.y + vars->exit.len_height);
-
-	// //right up
-	// for(int i = 0; i < 32;i++)
-	// my_mlx_pixel_put(&vars->remove_old_chr,0,i,0XFFFFFF);
-	// mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->exit.x + 64 , vars->exit.y);
-
-	// for(int i = 0; i < 16;i++)
-	// my_mlx_pixel_put(&vars->remove_old_chr,0,i,0XFFFFFF);
-	// mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, 250, 250);
-
 }
 
 
@@ -64,7 +42,6 @@ t_vars  create_fish_img(char *img_path, t_vars vars, int yer)
 										 &vars.balik.endian);
 	vars.balik.x = yer;
 	vars.balik.y = yer;
-	bilgi(&vars);
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.balik.img_ptr,vars.balik.x , vars.balik.y);
 	return (vars);
 }
@@ -90,12 +67,12 @@ void start_draw(int fd, int kac_adim)
 	{
 		i = get_next_line(fd, &read_data);
 
-		printf("\n");
+		//printf("\n");
 		x++;
 	}
 	for (int i = 0; i < 20; i++)
 	{
-		printf("i = %d \n",i);
+		//printf("i = %d \n",i);
 		vars = create_walls(relative_path, vars,i);
 	}
 	vars = create_fish_img(balik_path,vars,yer);
@@ -103,7 +80,6 @@ void start_draw(int fd, int kac_adim)
 	mlx_key_hook(vars.win,close_a,&vars);
 	if (keycode == 126)
 	{
-		printf("	eglkaf\n\n");
 		yer += 5;
 		keycode = mlx_key_hook(vars.win,close_a,&vars);
 	}
