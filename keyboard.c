@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 20:35:41 by adoner        #+#    #+#                 */
-/*   Updated: 2021/10/11 18:44:54 by adoner        ########   odam.nl         */
+/*   Updated: 2021/10/20 16:42:12 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,63 +21,74 @@ void bilgi(t_vars *vars)
 
 int close_a(int keycode, t_vars *vars)
 {
-	printf("\n\n\nHello from key_hook! %d vars mlx = %s win = %s\n", keycode, vars->mlx, vars->win);
-
+	
 	if (keycode == 53)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
 		exit(0);
 	}
-	//up
-	if (keycode == 126)
+	//left
+	printf("key %d",keycode);
+	if (keycode == 123)
 	{
-		bilgi(vars);
-		if (check_exit(*vars) == 0)
-			exit(1);
-		clean_old_image(vars);
-		if (vars->balik.x - 15 > vars->walls.len_height)
-			vars->balik.x -= 15;
-		else if (vars->balik.x > vars->balik.len_height)
-			vars->balik.x = vars->walls.len_height;
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.y,vars->balik.x );
-		printf("duvar %d", vars->walls.len_height);
-	}
-	//down
-	if (keycode == 125)
-	{	if (check_exit(*vars) == 0)
-			exit(1);
-		bilgi(vars);
-		clean_old_image(vars);
-		if (vars->balik.x + 15 + vars->balik.len_height < 1024 - 64)
-			vars->balik.x += 15;
-		else if (vars->balik.x + vars->balik.len_height < 1024 - 64)
-			vars->balik.x += 1024 - 64 - vars->balik.x - vars->balik.len_height;
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.y,vars->balik.x );
+			clean_old_image(vars);
+			if (check_block(vars, keycode) == 1)
+			{change_position(vars, keycode);
+	
+			}
+			else if (vars->balik.x - vars->game_speed > vars->walls.len_height)
+				vars->balik.x -= vars->game_speed;
+			else if (vars->balik.x > vars->balik.len_height  && check_exit(*vars) != 0)
+				vars->balik.x = vars->walls.len_height;
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.x,vars->balik.y);
+		
 		
 	}
 	//right
 	if (keycode == 124)
-	{if (check_exit(*vars) == 0)
-			exit(1);
-		bilgi(vars);
-		clean_old_image(vars);
-		if(vars->balik.y + 15 + vars->balik.len_height < 1024 - 64)
-			vars->balik.y +=15;
-		else if (vars->balik.y + vars->balik.len_height < 1024 - 64)
-			vars->balik.y += 1024 - 64 - vars->balik.y - vars->balik.len_height;
+	{	
+			clean_old_image(vars);
+			if (check_block(vars,keycode) == 1)
+			{
+change_position(vars, keycode);
+			}
+			else if (vars->balik.x + vars->game_speed + vars->balik.len_height < 1024 - 64)
+				vars->balik.x += vars->game_speed;
+			else if (vars->balik.x + vars->balik.len_height < 1024 - 64  && check_exit(*vars) != 0)
+				vars->balik.x += 1024 - 64 - vars->balik.x - vars->balik.len_height;
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.x,vars->balik.y);
 		
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.y,vars->balik.x );
 	}
-	//left
-	if (keycode == 123)
-	{if (check_exit(*vars) == 0)
-			exit(1);
-		bilgi(vars);
-		clean_old_image(vars);
-		if(vars->balik.y - 15 >  vars->walls.len_height)
-			vars->balik.y -= 15;
-		else if (vars->balik.y > vars->walls.len_height)
-			vars->balik.y = vars->walls.len_height;
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.y,vars->balik.x );
+	//down
+	if (keycode == 125)
+	{
+		
+			clean_old_image(vars);
+			if (check_block(vars,keycode) == 1)
+			{
+change_position(vars, keycode);
+			}
+			else if(vars->balik.y + vars->game_speed + vars->balik.len_height < 1024 - 64)
+				vars->balik.y +=vars->game_speed;
+			else if (vars->balik.y + vars->balik.len_height < 1024 - 64  && check_exit(*vars) != 0)
+				vars->balik.y += 1024 - 64 - vars->balik.y - vars->balik.len_height;	
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.x,vars->balik.y);
+		
+	}
+	//up
+	if (keycode == 126)
+	{
+			clean_old_image(vars);
+			if (check_block(vars,keycode) == 1)
+			{change_position(vars, keycode);
+			}
+			else if(vars->balik.y - vars->game_speed >  vars->walls.len_height)
+				vars->balik.y -= vars->game_speed;
+			else if (vars->balik.y > vars->walls.len_height  && check_exit(*vars) != 0)
+				vars->balik.y = vars->walls.len_height;
+				
+			printf("after position %d",vars->balik.y);
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.x,vars->balik.y);
+		
 	}
 }

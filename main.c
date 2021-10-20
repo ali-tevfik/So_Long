@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/10/19 17:00:07 by adoner        ########   odam.nl         */
+/*   Updated: 2021/10/20 16:24:14 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ void clean_old_image(t_vars *vars)
         }
         
     }
-    printf("\naq baligi nerde? x = %d end = %d\n",vars->balik.x,vars->balik.y);
-	bilgi(vars);
+   bilgi(vars);
 
-    mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->balik.y, vars->balik.x );
+    mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->balik.x, vars->balik.y );
 
 	// //left up
 	// for(int i = 0; i < 32;i++)
@@ -47,9 +46,9 @@ void clean_old_image(t_vars *vars)
 	// my_mlx_pixel_put(&vars->remove_old_chr,0,i,0XFFFFFF);
 	// mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->exit.x + 64 , vars->exit.y);
 
-	for(int i = 0; i < 32;i++)
-	my_mlx_pixel_put(&vars->remove_old_chr,i,0,0XFFFFFF);
-	mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->exit.x + 64, vars->exit.y + 64);
+	// for(int i = 0; i < 16;i++)
+	// my_mlx_pixel_put(&vars->remove_old_chr,0,i,0XFFFFFF);
+	// mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, 250, 250);
 
 }
 
@@ -65,7 +64,6 @@ t_vars  create_fish_img(char *img_path, t_vars vars, int yer)
 										 &vars.balik.endian);
 	vars.balik.x = yer;
 	vars.balik.y = yer;
-	printf("Balik olstu aq \nx=%d\ny%d",vars.balik.x,vars.balik.y);
 	bilgi(&vars);
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.balik.img_ptr,vars.balik.x , vars.balik.y);
 	return (vars);
@@ -86,7 +84,7 @@ void start_draw(int fd, int kac_adim)
 	yer = 600;
 	x = 0;
 	i = 1;
-	printf("afhajs2f\n\n\n");
+	vars.game_speed = 20;
 	vars = create_win(vars);
 	while (i > 0)
 	{
