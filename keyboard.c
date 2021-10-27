@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 20:35:41 by adoner        #+#    #+#                 */
-/*   Updated: 2021/10/26 15:09:57 by adoner        ########   odam.nl         */
+/*   Updated: 2021/10/27 15:46:52 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ int close_a(int keycode, t_vars *vars)
 	if (keycode == 123)
 	{
 			clean_old_image(vars);
-			if (check_block(vars, keycode) == 1){}
-				//vars->balik.x = change_position(vars, keycode);
-
+			if (check_block(vars, keycode) == 1)
+				change_chr_left(vars);
 			else if (vars->balik.x - vars->game_speed > vars->walls.len_height)
 				vars->balik.x -= vars->game_speed;
 			else if (vars->balik.x > vars->balik.len_height)
@@ -37,8 +36,8 @@ int close_a(int keycode, t_vars *vars)
 	if (keycode == 124)
 	{	
 			clean_old_image(vars);
-			if (check_block(vars,keycode) == 1){}
-				//vars->balik.x = change_position(vars, keycode);
+			if (check_block(vars,keycode) == 1)
+				change_chr_right(vars);
 			else if (vars->balik.x + vars->game_speed + vars->balik.len_height < 1024 - 64)
 				vars->balik.x += vars->game_speed;
 			else if (vars->balik.x + vars->balik.len_height < 1024 - 64)
@@ -51,8 +50,8 @@ int close_a(int keycode, t_vars *vars)
 	{
 		
 			clean_old_image(vars);
-			if (check_block(vars,keycode) == 1){}
-			//	vars->balik.y = change_position(vars, keycode);
+			if (check_block(vars,keycode) == 1)
+				change_chr_down(vars);
 			else if(vars->balik.y + vars->game_speed + vars->balik.len_height < 1024 - 64)
 				vars->balik.y +=vars->game_speed;
 			else if (vars->balik.y + vars->balik.len_height < 1024 - 64)
@@ -64,8 +63,8 @@ int close_a(int keycode, t_vars *vars)
 	if (keycode == 126)
 	{
 			clean_old_image(vars);
-			if (check_block(vars,keycode) == 1){}
-				//vars->balik.y = change_position(vars, keycode);
+			if (check_block(vars,keycode) == 1)
+				change_chr_up(vars);
 			else if(vars->balik.y - vars->game_speed >  vars->walls.len_height)
 				vars->balik.y -= vars->game_speed;
 			else if (vars->balik.y > vars->walls.len_height)

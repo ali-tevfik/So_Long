@@ -32,8 +32,11 @@ typedef struct	s_vars {
     int     game_speed;
 }				t_vars;
 
-
+void change_chr_up(t_vars *vars);
+void change_chr_down(t_vars *vars);
+void change_chr_left(t_vars *vars);
 int check_right(t_vars *vars);
+void change_chr_right(t_vars *vars);
 int check_left(t_vars *vars);
 int check_up(t_vars *vars);
 int check_down(t_vars *vars);
