@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/10/27 17:17:16 by adoner        ########   odam.nl         */
+/*   Updated: 2021/10/27 18:45:56 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,11 @@ void start_draw(int fd, int kac_adim)
 		create_walls(relative_path, &vars,i);
 	}
 	create_fish_img(balik_path, &vars,yer);
-	create_exit(exit_path, &vars,600);
+	create_exit(exit_path, &vars,300);
+
+	create_exit(exit_path, &vars,200);
+	create_exit(exit_path, &vars,400);
+	printf("\nvars x = %d y = %d \n\n",vars.exit.x, vars.exit.y);
 	mlx_key_hook(vars.win,close_a,&vars);
 	if (keycode == 126)
 	{

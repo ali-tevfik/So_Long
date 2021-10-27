@@ -17,6 +17,7 @@ typedef struct s_img
      int        endian; 
      int        x;
      int        y;
+     struct s_img *next;
  }                t_img;
 
 

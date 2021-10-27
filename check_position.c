@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/25 16:39:47 by adoner        #+#    #+#                 */
-/*   Updated: 2021/10/27 18:16:00 by adoner        ########   odam.nl         */
+/*   Updated: 2021/10/27 18:39:06 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int check_left(t_vars *vars)
 	
 	if (vars->exit.x + vars->exit.len_height > vars->balik.x -  vars->game_speed && vars->exit.x < vars->balik.x -  vars->game_speed)
 	{
-		printf("gurdu");
 			if (vars->exit.y < vars->balik.y && vars->exit.y + vars->exit.len_height > vars->balik.y)
 			return (1);
 		else if (vars->exit.y < vars->balik.y + vars->balik.len_height && vars->exit.y + vars->exit.len_height > vars->balik.y + vars->balik.len_height)
@@ -75,7 +74,7 @@ int check_right(t_vars *vars)
 	// printf("\nfirst %d > %d\n",vars->exit.x , vars->balik.x + vars->game_speed + vars->balik.len_height);
 	// printf("\nright second if segmen %d < %d , %d > %d\n",vars->exit.y , vars->balik.y , vars->exit.y + vars->exit.len_height , vars->balik.y);
 	// printf("third if segment %d < %d && %d > %d\n\n",vars->exit.y , vars->balik.y + vars->balik.len_height , vars->exit.y + vars->exit.len_height , vars->balik.y + vars->balik.len_height);
-	printf("game speed %d\n",vars->game_speed);
+	
 	if (vars->exit.x < vars->balik.x + vars->game_speed + vars->balik.len_height && vars->exit.x + vars->exit.len_height > vars->balik.x + vars->game_speed + vars->balik.len_height )
 	{
 		if (vars->exit.y < vars->balik.y && vars->exit.y + vars->exit.len_height > vars->balik.y)
