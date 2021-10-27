@@ -11,7 +11,8 @@ SRCS	=	get_next_line/get_next_line.c\
 			error_txt.c\
 			win.c\
 			check_maps.c\
-			exit.c
+			exit.c\
+			check_position.c
 
 OBJS	= $(SRCS:.c=.o)
 

@@ -33,10 +33,13 @@ typedef struct	s_vars {
 }				t_vars;
 
 
-
+int check_right(t_vars *vars);
+int check_left(t_vars *vars);
+int check_up(t_vars *vars);
+int check_down(t_vars *vars);
 int		main(int argc, char **argv);
 int close_a(int keycode, t_vars *vars);
-void change_position(t_vars *vars, int keycode);
+int change_position(t_vars *vars, int keycode);
 t_vars create_walls(char *img_path, t_vars vars,int nerde);
 int		check_up_down(char *data);
 int		check_left_right(char *data);
