@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/10/27 16:16:10 by adoner        ########   odam.nl         */
+/*   Updated: 2021/10/27 17:17:16 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,14 @@ void clean_old_image(t_vars *vars)
 
 
 
-t_vars  create_fish_img(char *img_path, t_vars vars, int yer)
+void  create_fish_img(char *img_path, t_vars *vars, int yer)
 {
-	vars.balik.img_ptr = mlx_xpm_file_to_image(vars.mlx, img_path, &vars.balik.img_width, &vars.balik.len_height);
-	vars.balik.address = mlx_get_data_addr(vars.balik.img_ptr, &vars.balik.bits_per_pixel, &vars.balik.line_size,
-										 &vars.balik.endian);
-	vars.balik.x = yer;
-	vars.balik.y = yer;
-	mlx_put_image_to_window(vars.mlx, vars.win, vars.balik.img_ptr,vars.balik.x , vars.balik.y);
-	return (vars);
+	vars->balik.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path, &vars->balik.img_width, &vars->balik.len_height);
+	vars->balik.address = mlx_get_data_addr(vars->balik.img_ptr, &vars->balik.bits_per_pixel, &vars->balik.line_size,
+										 &vars->balik.endian);
+	vars->balik.x = yer;
+	vars->balik.y = yer;
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.x , vars->balik.y);
 }
 void start_draw(int fd, int kac_adim)
 {
@@ -62,7 +61,7 @@ void start_draw(int fd, int kac_adim)
 	x = 0;
 	i = 1;
 	vars.game_speed = 20;
-	vars = create_win(vars);
+	create_win(&vars);
 	while (i > 0)
 	{
 		i = get_next_line(fd, &read_data);
@@ -73,10 +72,10 @@ void start_draw(int fd, int kac_adim)
 	for (int i = 0; i < 20; i++)
 	{
 		//printf("i = %d \n",i);
-		vars = create_walls(relative_path, vars,i);
+		create_walls(relative_path, &vars,i);
 	}
-	vars = create_fish_img(balik_path,vars,yer);
-	vars = create_exit(exit_path,vars,600);
+	create_fish_img(balik_path, &vars,yer);
+	create_exit(exit_path, &vars,600);
 	mlx_key_hook(vars.win,close_a,&vars);
 	if (keycode == 126)
 	{

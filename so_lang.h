@@ -30,6 +30,7 @@ typedef struct	s_vars {
     t_img   exit;
     t_img   remove_old_chr;
     int     game_speed;
+   // struct s_img *next;
 }				t_vars;
 
 void change_chr_up(t_vars *vars);
@@ -43,11 +44,11 @@ int check_down(t_vars *vars);
 int		main(int argc, char **argv);
 int close_a(int keycode, t_vars *vars);
 int change_position(t_vars *vars, int keycode);
-t_vars create_walls(char *img_path, t_vars vars,int nerde);
+void create_walls(char *img_path, t_vars *vars,int nerde);
 int		check_up_down(char *data);
 int		check_left_right(char *data);
- t_vars create_exit(char *img_path, t_vars vars,int nerde);
-t_vars create_win(t_vars vars);
+void create_exit(char *img_path, t_vars *vars,int nerde);
+void create_win(t_vars *vars);
 int check_exit(t_vars *vars,int keycode);
 void my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour);
 void	check_format(char *data);
