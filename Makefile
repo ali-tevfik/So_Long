@@ -13,7 +13,8 @@ SRCS	=	get_next_line/get_next_line.c\
 			exit.c\
 			change_position.c\
 			check_position.c\
-			create_img.c
+			create_img.c\
+			change_maps.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -56,4 +57,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY:	clean fclean re bonus
+.PHONY:	clean fclean re

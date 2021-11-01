@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/01 13:47:45 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/01 13:55:38 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/01 19:11:41 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ void  create_fish_img(char *img_path, t_vars *vars, int x, int y)
 
 void create_collection(char *img_path,t_vars *vars,int x, int y)
 {
-	vars->player.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path, &vars->player.img_width, &vars->player.len_height);
-	vars->player.address = mlx_get_data_addr(vars->player.img_ptr, &vars->player.bits_per_pixel, &vars->player.line_size,
-										 &vars->player.endian);
-	vars->player.x = x * vars->walls.len_height;
-	vars->player.y = y * vars->walls.len_height;
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->player.img_ptr,vars->player.x , vars->player.y);
+	vars->collection.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path, &vars->collection.img_width, &vars->collection.len_height);
+	vars->collection.address = mlx_get_data_addr(vars->collection.img_ptr, &vars->collection.bits_per_pixel, &vars->collection.line_size,
+										 &vars->collection.endian);
+	vars->collection.x = x * vars->walls.len_height;
+	vars->collection.y = y * vars->walls.len_height;
+	vars->total_eat++;
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->collection.img_ptr,vars->collection.x , vars->collection.y);
 }
 
  void create_exit(char *img_path, t_vars *vars,int x, int y)
@@ -63,7 +64,7 @@ void    create_win(t_vars *vars, int x, int y)
 
     a = 0;
 	vars->mlx = mlx_init();
-	vars->win = mlx_new_window(vars->mlx, x * 64, y * 64, "Hello world!");
+	vars->win = mlx_new_window(vars->mlx, x * 64, (y + 1) * 64, "TEMEL REIS!");
     vars->background.img_ptr = mlx_new_image(vars->mlx,x * 64, y * 64);
     vars->background.address =  mlx_get_data_addr(vars->background.img_ptr, &vars->background.bits_per_pixel, &vars->background.line_size,
 								&vars->background.endian);

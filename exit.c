@@ -14,25 +14,20 @@
 
 
 
-int check_block(t_vars *vars, int keycode)
+void exit_game(t_vars *vars)
 {
-	int result;
-	if (keycode == 123)
+	int i;
+	int a;
+
+	a = 0;
+	i = 0;
+	printf("counter %d",vars->counter);
+	while(vars->maps[i])
 	{
-		result = check_left(vars);
+		free(vars->maps[i]);
+		i++;
 	}
-	else if (keycode == 124)
-	{
-		result = check_right(vars);
-	}
-	else if(keycode == 125)
-	{
-		result = check_down(vars);
-	}
-	else 
-	{
-		result = check_up(vars);
-	}
-	return (result);
+	free(vars->maps);
+	exit (0);
 	
 }
