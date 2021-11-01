@@ -6,11 +6,11 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/02 16:37:31 by catalina      #+#    #+#                 */
-/*   Updated: 2021/09/02 16:38:37 by catalina      ########   odam.nl         */
+/*   Updated: 2021/11/01 13:55:30 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_lang.h"
+#include "so_long.h"
 
 int	check_up_down(char *data)
 {

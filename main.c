@@ -6,11 +6,11 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/10/27 18:45:56 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/01 13:55:56 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_lang.h"
+#include "so_long.h"
 
 
 void clean_old_image(t_vars *vars)
@@ -27,7 +27,7 @@ void clean_old_image(t_vars *vars)
         }
         
     }
-    mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->balik.x, vars->balik.y );
+    mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->player.x, vars->player.y );
 }
 
 
@@ -35,57 +35,47 @@ void clean_old_image(t_vars *vars)
 
 
 
-void  create_fish_img(char *img_path, t_vars *vars, int yer)
-{
-	vars->balik.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path, &vars->balik.img_width, &vars->balik.len_height);
-	vars->balik.address = mlx_get_data_addr(vars->balik.img_ptr, &vars->balik.bits_per_pixel, &vars->balik.line_size,
-										 &vars->balik.endian);
-	vars->balik.x = yer;
-	vars->balik.y = yer;
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->balik.img_ptr,vars->balik.x , vars->balik.y);
-}
-void start_draw(int fd, int kac_adim)
+
+
+
+void start_draw(int fd, int kac_adim, int xx, int y)
 {
 	char *read_data;
 	int i;
 	int x;
 	int img_width, img_height;
-	char *relative_path = "./teapot.xpm";
-	char *balik_path = "./fish_monster.xpm";
-	char *exit_path = "./teapot.xpm";
+	char *relative_path = "image/walls.xpm";
+	char *player_path = "image/fish.xpm";
+	char *colletief_path = "image/smal_water_girl.xpm";
+	char *exit_path = "image/fish_klein.xpm";
 	t_vars vars;
-	int keycode; 
 	int yer;
+	int a;
 
 	yer = 600;
 	x = 0;
 	i = 1;
-	vars.game_speed = 20;
-	create_win(&vars);
+	vars.game_speed = 64;
+	create_win(&vars,xx,y);
 	while (i > 0)
 	{
 		i = get_next_line(fd, &read_data);
-
-		//printf("\n");
+		a = 0;
+		while(read_data[a])
+		{
+			if (read_data[a] == '1')
+				create_walls(relative_path,&vars,a,x);
+			else if (read_data[a] == 'P')
+ 				create_fish_img(player_path,&vars,a,x);
+			else if (read_data[a] == 'C')
+				create_collection(colletief_path,&vars,a,x);
+			else if (read_data[a] == 'E')
+				create_exit(exit_path, &vars,a,x);
+			a++;
+		}
 		x++;
 	}
-	for (int i = 0; i < 20; i++)
-	{
-		//printf("i = %d \n",i);
-		create_walls(relative_path, &vars,i);
-	}
-	create_fish_img(balik_path, &vars,yer);
-	create_exit(exit_path, &vars,300);
-
-	create_exit(exit_path, &vars,200);
-	create_exit(exit_path, &vars,400);
-	printf("\nvars x = %d y = %d \n\n",vars.exit.x, vars.exit.y);
 	mlx_key_hook(vars.win,close_a,&vars);
-	if (keycode == 126)
-	{
-		yer += 5;
-		keycode = mlx_key_hook(vars.win,close_a,&vars);
-	}
 	mlx_loop(vars.mlx);
 }
 
@@ -116,7 +106,7 @@ int main(int argc, char **argv)
 		if (kac_adim != 0)
 		{
 			if (len != ft_strlen(read_data))
-				return (-1);
+				control_map = -1;
 		}
 		else
 			len = ft_strlen(read_data);
@@ -142,5 +132,5 @@ int main(int argc, char **argv)
 	if (control_map == -1)
 		printf("Map bozuk aq");
 	else
-		start_draw(start_fd, kac_adim);
+		start_draw(start_fd, kac_adim, len,kac_adim);
 }

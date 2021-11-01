@@ -6,11 +6,11 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/02 17:00:45 by catalina      #+#    #+#                 */
-/*   Updated: 2021/09/02 17:02:14 by catalina      ########   odam.nl         */
+/*   Updated: 2021/11/01 13:55:43 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_lang.h"
+#include "so_long.h"
 
 void	error_txt(char *error_txt)
 {

@@ -1,4 +1,4 @@
-#include "so_lang.h"
+#include "so_long.h"
 
 int *ciz(int kacinci)
 {
@@ -24,15 +24,5 @@ int *ciz(int kacinci)
     }
 
     mlx_put_image_to_window(mlx, mlx_win, img.img_ptr, 0, kacinci * 63);
-    return (mlx);
-}
-int *deneme(char *data, int kacinci)
-{
-    void *mlx;
-    for (int i = 0; !data[i]; i++)
-    {
-        if (data[i] == '1')
-            mlx = ciz(kacinci);
-    }
     return (mlx);
 }
