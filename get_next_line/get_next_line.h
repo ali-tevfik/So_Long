@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/17 11:17:00 by catalina      #+#    #+#                 */
-/*   Updated: 2020/12/24 00:19:10 by catalina      ########   odam.nl         */
+/*   Updated: 2021/11/01 20:14:30 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef	struct	s_digit
+typedef struct s_digit
 {
 	int			where;
 	int			result;

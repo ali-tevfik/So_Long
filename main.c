@@ -6,53 +6,52 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/01 19:10:25 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/01 20:12:56 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
-void clean_old_image(t_vars *vars)
+void	clean_old_image(t_vars *vars)
 {
-	
-	vars->remove_old_chr.img_ptr = mlx_new_image(vars->mlx,vars->player.img_width,vars->player.img_width);
-    vars->remove_old_chr.address =  mlx_get_data_addr(vars->remove_old_chr.img_ptr, &vars->remove_old_chr.bits_per_pixel, &vars->remove_old_chr.line_size,
-								&vars->remove_old_chr.endian);
-    for (int x = 0; x < 32; x++)
-    {
-        for (int y = 0; y < 32; y++)
-        {
-             my_mlx_pixel_put(&vars->remove_old_chr,x,y, 0XADD8E6);
-        }
-        
-    }
-    mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->player.x, vars->player.y );
+	int	x;
+	int	y;
+
+	x = 0;
+	vars->remove_old_chr.img_ptr = mlx_new_image(vars->mlx,
+		vars->player.img_width, vars->player.img_width);
+	vars->remove_old_chr.address = mlx_get_data_addr(vars->remove_old_chr.img_ptr,
+		&vars->remove_old_chr.bits_per_pixel,
+		&vars->remove_old_chr.line_size,
+		&vars->remove_old_chr.endian);
+	while (x < 32)
+	{
+		y = 0;
+		while (y < 32)
+		{
+			my_mlx_pixel_put(&vars->remove_old_chr, x, y, 0XADD8E6);
+			y++;
+		}
+		x++;
+}
+	mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, vars->player.x, vars->player.y );
 }
 
-
-
-
-
-
-
-
-
-void start_draw(int fd, int kac_adim, int xx, int y)
+void	start_draw(int fd, int kac_adim, int xx, int y)
 {
-	char *read_data;
-	int i;
-	int x;
-	int img_width, img_height;
-	char *relative_path = "image/walls.xpm";
-	char *player_path = "image/fish.xpm";
-	char *colletief_path = "image/smal_water_girl.xpm";
-	char *exit_path = "image/fish_klein.xpm";
-	t_vars vars;
-	int a;
+	char	*read_data;
+	int		i;
+	int		x;
+	int		img_width, img_height;
+	char	*relative_path = "image/walls.xpm";
+	char	*player_path = "image/fish.xpm";
+	char	*colletief_path = "image/smal_water_girl.xpm";
+	char	*exit_path = "image/fish_klein.xpm";
+	t_vars	vars;
+	int		a;
 
 	vars.counter = 0;
-	vars.maps = (char**)malloc(sizeof(vars.maps) * kac_adim); 
+	vars.maps = (char**) malloc(sizeof(vars.maps) * kac_adim);
 	x = 0;
 	i = 1;
 	vars.game_speed = 64;

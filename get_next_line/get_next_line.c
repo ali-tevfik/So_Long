@@ -6,13 +6,13 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/18 19:44:42 by catalina      #+#    #+#                 */
-/*   Updated: 2021/09/15 17:36:36 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/01 20:17:44 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_digit		check_newline(char *old_info, int inside_value)
+t_digit	check_newline(char *old_info, int inside_value)
 {
 	int		i;
 	t_digit	arr;
@@ -36,9 +36,9 @@ t_digit		check_newline(char *old_info, int inside_value)
 	return (arr);
 }
 
-char		*add_old_string(char *old_string, char *string)
+char	*add_old_string(char *old_string, char *string)
 {
-	char *tmp;
+	char	*tmp;
 
 	if (!old_string)
 		old_string = ft_strdup("");
@@ -47,7 +47,7 @@ char		*add_old_string(char *old_string, char *string)
 	return (tmp);
 }
 
-char		*update_old_string(char *old_string)
+char	*update_old_string(char *old_string)
 {
 	char	*tmp;
 	t_digit	arr_digit;
@@ -58,7 +58,7 @@ char		*update_old_string(char *old_string)
 	if (arr_digit.result == 1)
 	{
 		tmp = ft_substr(old_string, arr_digit.where + 1,
-							ft_strlen(old_string + arr_digit.where));
+			ft_strlen(old_string + arr_digit.where));
 	}
 	else
 		tmp = NULL;
@@ -66,9 +66,9 @@ char		*update_old_string(char *old_string)
 	return (tmp);
 }
 
-char		*line_load(char *old_string)
+char	*line_load(char *old_string)
 {
-	char *line;
+	char	*line;
 
 	if (!old_string)
 		return (NULL);
@@ -79,20 +79,20 @@ char		*line_load(char *old_string)
 	return (line);
 }
 
-int			get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
-	static	char	*old_string;
-	int				result;
-	char			string[100 + 1];
-	t_digit			arr_digit;
+	static char	*old_string;
+	int			result;
+	char		string[100 + 1];
+	t_digit		arr_digit;
 
 	if (fd >= MAX_FD || fd < 0
-				|| line == NULL || read(fd, string, 0) < 0)
+		|| line == NULL || read(fd, string, 0) < 0)
 		return (-1);
 	arr_digit = check_newline(old_string, 0);
 	result = 1;
-	while (result > 0 && arr_digit.result == 0 &&
-			!(!old_string && arr_digit.inside_while == 1))
+	while (result > 0 && arr_digit.result == 0
+		&& !(!old_string && arr_digit.inside_while == 1))
 	{
 		result = read(fd, string, 100);
 		string[result] = '\0';

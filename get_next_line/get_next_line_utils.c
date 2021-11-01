@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 11:34:41 by catalina      #+#    #+#                 */
-/*   Updated: 2021/01/04 12:25:01 by catalina      ########   odam.nl         */
+/*   Updated: 2021/11/01 20:18:48 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (*s != '\0')
@@ -35,7 +35,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	i = 0;
 	totallen = ft_strlen(s1) + ft_strlen(s2);
-	c = (char*)malloc(sizeof(char) * (totallen + 1));
+	c = (char *)malloc(sizeof(char) * (totallen + 1));
 	if (!c)
 		return (NULL);
 	while (*s1 != '\0')
@@ -76,7 +76,7 @@ char	*biggerstart(void)
 {
 	char	*c;
 
-	c = (char*)malloc(sizeof(char) * 1);
+	c = (char *)malloc(sizeof(char) * 1);
 	if (!c)
 		return (NULL);
 	*c = '\0';
@@ -95,7 +95,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	if (len_s < start)
 		return (biggerstart());
-	c = (char*)malloc(sizeof(char) * (len + 1));
+	c = (char *)malloc(sizeof(char) * (len + 1));
 	if (!c)
 		return (NULL);
 	while (*(s + start) != '\0' && len != 0)

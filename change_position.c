@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/27 15:23:37 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/01 15:49:04 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/01 19:48:01 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void change_position(t_vars *vars, int keycode)
     {
          vars->player.y = vars->player.y - vars->game_speed;
     }
-    
+
     mlx_put_image_to_window(vars->mlx, vars->win, vars->player.img_ptr,vars->player.x , vars->player.y);
 }
 
@@ -51,7 +51,7 @@ void clear_eat(t_vars *vars, int x, int y)
         {
              my_mlx_pixel_put(&vars->remove_old_chr,a,b, 0XADD8E6);
         }
-        
+
     }
     mlx_put_image_to_window(vars->mlx , vars->win, vars->remove_old_chr.img_ptr, x, y);
 }
