@@ -8,13 +8,14 @@ SRCS	=	get_next_line/get_next_line.c\
 			main.c\
 			keyboard.c\
 			error_txt.c\
-			win.c\
+			utils.c\
 			check_maps.c\
 			exit.c\
 			change_position.c\
 			check_position.c\
 			create_img.c\
-			change_maps.c
+			change_maps.c\
+			check_input.c
 
 OBJS	= $(SRCS:.c=.o)
 

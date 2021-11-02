@@ -6,14 +6,17 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/01 13:47:45 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/01 20:06:17 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/02 15:59:41 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	create_fish_img(char *img_path, t_vars *vars, int x, int y)
+void	create_fish_img(t_vars *vars, int x, int y)
 {
+	char	*img_path;
+
+	img_path = "image/fish.xpm";
 	vars->player.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path,
 		&vars->player.img_width, &vars->player.len_height);
 	vars->player.address = mlx_get_data_addr(vars->player.img_ptr,
@@ -26,8 +29,11 @@ void	create_fish_img(char *img_path, t_vars *vars, int x, int y)
 		vars->player.img_ptr, vars->player.x, vars->player.y);
 }
 
-void	create_collection(char *img_path, t_vars *vars, int x, int y)
+void	create_collection(t_vars *vars, int x, int y)
 {
+	char	*img_path;
+
+	img_path = "image/balik.xpm";
 	vars->collection.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path,
 		&vars->collection.img_width, &vars->collection.len_height);
 	vars->collection.address = mlx_get_data_addr(vars->collection.img_ptr,
@@ -41,8 +47,11 @@ void	create_collection(char *img_path, t_vars *vars, int x, int y)
 		vars->collection.img_ptr, vars->collection.x, vars->collection.y);
 }
 
-void	create_exit(char *img_path, t_vars *vars, int x, int y)
+void	create_exit(t_vars *vars, int x, int y)
 {
+	char	*img_path;
+
+	img_path = "image/fish_klein.xpm";
 	vars->exit.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path,
 		&vars->exit.img_width, &vars->exit.len_height);
 	vars->exit.address = mlx_get_data_addr(vars->exit.img_ptr,
@@ -54,8 +63,11 @@ void	create_exit(char *img_path, t_vars *vars, int x, int y)
 		vars->exit.x, vars->exit.y);
 }
 
-void	create_walls(char *img_path, t_vars *vars, int x, int y)
+void	create_walls(t_vars *vars, int x, int y)
 {
+	char	*img_path;
+
+	img_path = "image/walls.xpm";
 	vars->walls.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path,
 		&vars->walls.img_width, &vars->walls.len_height);
 	vars->walls.address = mlx_get_data_addr(vars->walls.img_ptr,

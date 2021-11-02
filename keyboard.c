@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 20:35:41 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/01 19:50:44 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/02 15:50:20 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	result_func(t_vars *vars, int keycode, int result)
 {
 	if (result == 0)
 		change_position(vars, keycode);
-	else if (result == -1)
-	{}
 	else if (result == -2)
 	{
 		if (vars->ate == vars->total_eat)
