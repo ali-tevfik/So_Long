@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 14:26:11 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/03 14:52:53 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/03 16:42:33 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ int		check_len_maps(int argc, char **argv, int fd);
 int		step_find(char **argv);
 int		line_len(char **argv);
 int		check_player(char** argv);
+int		close_clikl(t_vars *vars);
 #endif

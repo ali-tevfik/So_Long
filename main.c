@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/03 15:06:04 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/03 16:43:31 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	start_draw(int fd, int step, int len)
 		x++;
 	}
 	vars.maps[x] = NULL;
-	mlx_key_hook(vars.win, close_a, &vars);
+	mlx_hook(vars.win, 2, 0, close_a, &vars);
+	mlx_hook(vars.win, 17, 0, close_clikl, &vars);
 	mlx_loop(vars.mlx);
 }
 
@@ -82,4 +83,5 @@ int	main(int argc, char **argv)
 	start_fd = open(argv[1], O_RDONLY);
 	len = line_len(argv);
 	start_draw(start_fd, step, len);
+
 }
