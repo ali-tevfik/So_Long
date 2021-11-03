@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   change_maps.c                                      :+:    :+:            */
+/*   ft_strlcpy.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/01 16:03:29 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/03 21:36:48 by adoner        ########   odam.nl         */
+/*   Created: 2020/11/16 11:27:44 by adoner        #+#    #+#                 */
+/*   Updated: 2020/11/16 11:53:23 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <string.h>
+#include "libft.h"
 
-void	change_maps(t_vars *vars, int keycode)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	x;
-	int	y;
-	int	i;
+	size_t			i;
 
 	i = 0;
-	x = vars->player.x / 64;
-	y = vars->player.y / 64;
-	if (keycode == 123 || keycode == 0)
-		vars->maps[y][x - 1] = '0';
-	if (keycode == 124 || keycode == 2)
-		vars->maps[y][x + 1] = '0';
-	if (keycode == 125 || keycode == 1)
-		vars->maps[y + 1][x] = '0';
-	if (keycode == 126 || keycode == 13)
-		vars->maps[y - 1][x] = '0';
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	if (src == NULL)
+		return (0);
+	while (*(src + i) != '\0' && (dstsize - 1) > i)
+	{
+		*(dst + i) = *(src + i);
+		i++;
+	}
+	*(dst + i) = '\0';
+	return (ft_strlen(src));
 }

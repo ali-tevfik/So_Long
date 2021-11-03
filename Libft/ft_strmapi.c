@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   change_maps.c                                      :+:    :+:            */
+/*   ft_strmapi.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/01 16:03:29 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/03 21:36:48 by adoner        ########   odam.nl         */
+/*   Created: 2020/11/09 12:25:09 by adoner        #+#    #+#                 */
+/*   Updated: 2020/11/16 13:43:29 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
+#include <stdlib.h>
 
-void	change_maps(t_vars *vars, int keycode)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	x;
-	int	y;
-	int	i;
+	int		i;
+	char	*a;
 
 	i = 0;
-	x = vars->player.x / 64;
-	y = vars->player.y / 64;
-	if (keycode == 123 || keycode == 0)
-		vars->maps[y][x - 1] = '0';
-	if (keycode == 124 || keycode == 2)
-		vars->maps[y][x + 1] = '0';
-	if (keycode == 125 || keycode == 1)
-		vars->maps[y + 1][x] = '0';
-	if (keycode == 126 || keycode == 13)
-		vars->maps[y - 1][x] = '0';
+	if (s == NULL || f == NULL)
+		return (NULL);
+	a = (char *)malloc(ft_strlen(s) + 1);
+	if (!a)
+		return (NULL);
+	while (*(s + i) != '\0')
+	{
+		*(a + i) = *(s + i);
+		i++;
+	}
+	*(a + i) = '\0';
+	i = 0;
+	while (*(s + i) != '\0')
+	{
+		*(a + i) = (*f)(i, *(a + i));
+		i++;
+	}
+	return (a);
 }

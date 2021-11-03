@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   change_maps.c                                      :+:    :+:            */
+/*   ft_strncmp.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/01 16:03:29 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/03 21:36:48 by adoner        ########   odam.nl         */
+/*   Created: 2020/11/16 11:28:00 by adoner        #+#    #+#                 */
+/*   Updated: 2021/02/24 22:49:40 by catalina      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <string.h>
+#include <stddef.h>
 
-void	change_maps(t_vars *vars, int keycode)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	x;
-	int	y;
-	int	i;
+	size_t			i;
+	unsigned char	*st1;
+	unsigned char	*st2;
 
+	st1 = (unsigned char *)s1;
+	st2 = (unsigned char*)s2;
 	i = 0;
-	x = vars->player.x / 64;
-	y = vars->player.y / 64;
-	if (keycode == 123 || keycode == 0)
-		vars->maps[y][x - 1] = '0';
-	if (keycode == 124 || keycode == 2)
-		vars->maps[y][x + 1] = '0';
-	if (keycode == 125 || keycode == 1)
-		vars->maps[y + 1][x] = '0';
-	if (keycode == 126 || keycode == 13)
-		vars->maps[y - 1][x] = '0';
+	while (i < n)
+	{
+		if (*(st2 + i) != *(st1 + i))
+			return (*(st1 + i) - *(st2 + i));
+		if (*(st1 + i) == '\0' && *(st2 + i) == '\0')
+			return (0);
+		i++;
+	}
+	return (0);
 }

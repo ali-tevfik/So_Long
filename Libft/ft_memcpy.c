@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   change_maps.c                                      :+:    :+:            */
+/*   ft_memcpy.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/01 16:03:29 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/03 21:36:48 by adoner        ########   odam.nl         */
+/*   Created: 2020/11/16 11:26:26 by adoner        #+#    #+#                 */
+/*   Updated: 2021/02/24 22:47:27 by catalina      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <stdlib.h>
+#include "libft.h"
 
-void	change_maps(t_vars *vars, int keycode)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int	x;
-	int	y;
-	int	i;
+	const char	*src1;
+	size_t		i;
+	char		*dst1;
 
+	if (!src && !dst)
+		return (0);
+	src1 = src;
+	dst1 = dst;
 	i = 0;
-	x = vars->player.x / 64;
-	y = vars->player.y / 64;
-	if (keycode == 123 || keycode == 0)
-		vars->maps[y][x - 1] = '0';
-	if (keycode == 124 || keycode == 2)
-		vars->maps[y][x + 1] = '0';
-	if (keycode == 125 || keycode == 1)
-		vars->maps[y + 1][x] = '0';
-	if (keycode == 126 || keycode == 13)
-		vars->maps[y - 1][x] = '0';
+	while (n > i)
+	{
+		*(dst1 + i) = *(src1 + i);
+		i++;
+	}
+	return (dst);
 }

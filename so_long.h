@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 14:26:11 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/03 16:42:33 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/03 22:10:38 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include "Libft/libft.h"
 
 typedef struct s_img
 {
@@ -72,4 +73,5 @@ int		step_find(char **argv);
 int		line_len(char **argv);
 int		check_player(char** argv);
 int		close_clikl(t_vars *vars);
+void	counter_draw(t_vars *vars);
 #endif

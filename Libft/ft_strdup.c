@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   change_maps.c                                      :+:    :+:            */
+/*   ft_strdup.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/01 16:03:29 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/03 21:36:48 by adoner        ########   odam.nl         */
+/*   Created: 2020/11/16 11:27:16 by adoner        #+#    #+#                 */
+/*   Updated: 2020/11/16 11:27:18 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <stdlib.h>
+#include "libft.h"
 
-void	change_maps(t_vars *vars, int keycode)
+char	*ft_strdup(const char *s1)
 {
-	int	x;
-	int	y;
-	int	i;
+	int		i;
+	char	*s2;
 
 	i = 0;
-	x = vars->player.x / 64;
-	y = vars->player.y / 64;
-	if (keycode == 123 || keycode == 0)
-		vars->maps[y][x - 1] = '0';
-	if (keycode == 124 || keycode == 2)
-		vars->maps[y][x + 1] = '0';
-	if (keycode == 125 || keycode == 1)
-		vars->maps[y + 1][x] = '0';
-	if (keycode == 126 || keycode == 13)
-		vars->maps[y - 1][x] = '0';
+	s2 = malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (s2 == NULL)
+		return (0);
+	while (*(s1 + i) != '\0')
+	{
+		*(s2 + i) = *(s1 + i);
+		i++;
+	}
+	*(s2 + i) = '\0';
+	return (s2);
 }

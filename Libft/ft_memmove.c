@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   change_maps.c                                      :+:    :+:            */
+/*   ft_memmove.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/01 16:03:29 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/03 21:36:48 by adoner        ########   odam.nl         */
+/*   Created: 2020/11/16 11:26:35 by adoner        #+#    #+#                 */
+/*   Updated: 2021/02/24 22:47:37 by catalina      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	change_maps(t_vars *vars, int keycode)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int	x;
-	int	y;
-	int	i;
+	size_t		i;
+	char		*dst1;
+	const char	*src1;
 
+	dst1 = (char *)dst;
 	i = 0;
-	x = vars->player.x / 64;
-	y = vars->player.y / 64;
-	if (keycode == 123 || keycode == 0)
-		vars->maps[y][x - 1] = '0';
-	if (keycode == 124 || keycode == 2)
-		vars->maps[y][x + 1] = '0';
-	if (keycode == 125 || keycode == 1)
-		vars->maps[y + 1][x] = '0';
-	if (keycode == 126 || keycode == 13)
-		vars->maps[y - 1][x] = '0';
+	src1 = (char *)src;
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	while (len > i)
+	{
+		if (src > dst)
+			*(dst1 + i) = *(src1 + i);
+		else
+			*(dst1 + len - i - 1) = *(src1 + len - i - 1);
+		i++;
+	}
+	return (dst);
 }

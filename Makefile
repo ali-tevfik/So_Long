@@ -19,6 +19,10 @@ SRCS	=	get_next_line/get_next_line.c\
 
 OBJS	= $(SRCS:.c=.o)
 
+LIBFT_DIR = libft
+
+LIBFT_LIB = libft.a
+
 NAME	= so_long
 
 GCC		= gcc
@@ -37,7 +41,8 @@ all:	$(NAME)
 
 $(NAME):	$(OBJS)
 	$(MAKE) -C $(MLX_DIR)
-	$(GCC) $(FLAGS) -o $(NAME) $(OBJS) $(MLX_DIR)/$(MLX_LIB) $(LINKS)
+	$(MAKE) -C $(LIBFT_DIR)
+	$(GCC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBFT_DIR)/$(LIBFT_LIB) $(MLX_DIR)/$(MLX_LIB) $(LINKS)
 
 %.o: %.c $(HEADER_FILE)
 	@echo "$(GREEN)Compiling:$(NORMAL)"
@@ -48,12 +53,14 @@ clean:
 	@echo "$(RED)Removing all object files...$(NORMAL)"
 	rm -f $(OBJS)
 	make -C $(MLX_DIR) clean
+	make -C $(LIBFT_DIR) clean
 	@echo "$(GREEN)Succesfully removed all object files!$(NORMAL)"
 
 fclean: clean
 	@echo "$(RED)Removing libraries and bitmap file...$(NORMAL)"
 	rm -f $(NAME)
 	make -C $(MLX_DIR) clean
+	make -C $(LIBFT_DIR) fclean
 	@echo "$(GREEN)Successfully removed libraries and bitmap file!$(NORMAL)"
 
 re: fclean all
