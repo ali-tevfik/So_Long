@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/01 13:47:45 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/02 15:59:41 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/03 14:21:02 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	create_fish_img(t_vars *vars, int x, int y)
 
 	img_path = "image/fish.xpm";
 	vars->player.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path,
-		&vars->player.img_width, &vars->player.len_height);
+			&vars->player.img_width, &vars->player.len_height);
 	vars->player.address = mlx_get_data_addr(vars->player.img_ptr,
-		&vars->player.bits_per_pixel,
-		&vars->player.line_size,
-		&vars->player.endian);
+			&vars->player.bits_per_pixel,
+			&vars->player.line_size,
+			&vars->player.endian);
 	vars->player.x = x * vars->walls.len_height;
 	vars->player.y = y * vars->walls.len_height;
 	mlx_put_image_to_window (vars->mlx, vars->win,
@@ -35,11 +35,11 @@ void	create_collection(t_vars *vars, int x, int y)
 
 	img_path = "image/balik.xpm";
 	vars->collection.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path,
-		&vars->collection.img_width, &vars->collection.len_height);
+			&vars->collection.img_width, &vars->collection.len_height);
 	vars->collection.address = mlx_get_data_addr(vars->collection.img_ptr,
-		&vars->collection.bits_per_pixel,
-		&vars->collection.line_size,
-		&vars->collection.endian);
+			&vars->collection.bits_per_pixel,
+			&vars->collection.line_size,
+			&vars->collection.endian);
 	vars->collection.x = x * vars->walls.len_height;
 	vars->collection.y = y * vars->walls.len_height;
 	vars->total_eat++;
@@ -53,10 +53,10 @@ void	create_exit(t_vars *vars, int x, int y)
 
 	img_path = "image/fish_klein.xpm";
 	vars->exit.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path,
-		&vars->exit.img_width, &vars->exit.len_height);
+			&vars->exit.img_width, &vars->exit.len_height);
 	vars->exit.address = mlx_get_data_addr(vars->exit.img_ptr,
-		&vars->exit.bits_per_pixel,
-		&vars->exit.line_size, &vars->exit.endian);
+			&vars->exit.bits_per_pixel,
+			&vars->exit.line_size, &vars->exit.endian);
 	vars->exit.x = x * vars->walls.len_height;
 	vars->exit.y = y * vars->walls.len_height;
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->exit.img_ptr,
@@ -69,10 +69,10 @@ void	create_walls(t_vars *vars, int x, int y)
 
 	img_path = "image/walls.xpm";
 	vars->walls.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path,
-		&vars->walls.img_width, &vars->walls.len_height);
+			&vars->walls.img_width, &vars->walls.len_height);
 	vars->walls.address = mlx_get_data_addr(vars->walls.img_ptr,
-		&vars->walls.bits_per_pixel,
-		&vars->walls.line_size, &vars->walls.endian);
+			&vars->walls.bits_per_pixel,
+			&vars->walls.line_size, &vars->walls.endian);
 	vars->walls.x = x * vars->walls.len_height;
 	vars->walls.y = y * vars->walls.len_height;
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->walls.img_ptr,
@@ -89,8 +89,8 @@ void	create_win(t_vars *vars, int x, int y)
 	vars->win = mlx_new_window(vars->mlx, x * 64, (y + 1) * 64, "TEMEL REIS!");
 	vars->background.img_ptr = mlx_new_image(vars->mlx, x * 64, y * 64);
 	vars->background.address = mlx_get_data_addr(vars->background.img_ptr,
-		&vars->background.bits_per_pixel,
-		&vars->background.line_size, &vars->background.endian);
+			&vars->background.bits_per_pixel,
+			&vars->background.line_size, &vars->background.endian);
 	while (a < x * 64)
 	{
 		b = 0;

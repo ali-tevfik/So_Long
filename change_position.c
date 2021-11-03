@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/27 15:23:37 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/02 15:44:03 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/03 14:19:20 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	clear_eat(t_vars *vars, int x, int y)
 
 	a = 0;
 	vars->remove_old_chr.img_ptr = mlx_new_image(vars->mlx,
-		vars->player.img_width, vars->player.img_width);
+			vars->player.img_width, vars->player.img_width);
 	vars->remove_old_chr.address = mlx_get_data_addr(
-		vars->remove_old_chr.img_ptr,
-		&vars->remove_old_chr.bits_per_pixel,
-		&vars->remove_old_chr.line_size,
-		&vars->remove_old_chr.endian);
+			vars->remove_old_chr.img_ptr,
+			&vars->remove_old_chr.bits_per_pixel,
+			&vars->remove_old_chr.line_size,
+			&vars->remove_old_chr.endian);
 	while (a < 32)
 	{
 		b = 0;
