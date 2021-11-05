@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 20:40:57 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/03 22:31:33 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/05 19:12:10 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,40 +24,42 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour)
 
 void	clean_old_image(t_vars *vars)
 {
-	int	x;
-	int	y;
+	int	a;
+	int	b;
 
-	x = 0;
+	a = 0;
 	vars->remove_old_chr.img_ptr = mlx_new_image(vars->mlx,
-			vars->remove_old_chr.img_width, vars->remove_old_chr.img_width);
+			vars->player.img_width, vars->player.len_height);
 	vars->remove_old_chr.address = mlx_get_data_addr(
 			vars->remove_old_chr.img_ptr,
 			&vars->remove_old_chr.bits_per_pixel,
 			&vars->remove_old_chr.line_size,
 			&vars->remove_old_chr.endian);
-	while (x < vars->player.len_height)
+	while (a < vars->player.img_width)
 	{
-		y = 0;
-		while (y < vars->player.img_width)
+		b = 0;
+		while (b < vars->player.len_height)
 		{
-			my_mlx_pixel_put(&vars->remove_old_chr, x, y, 0XFFFFFF);
-			y++;
+			my_mlx_pixel_put(&vars->remove_old_chr, a, b, 0XADD8E6);
+			b++;
 		}
-		x++;
+		a++;
 	}
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->remove_old_chr.img_ptr,
-		vars->player.x, vars->player.y);
-	printf("endian %d height %d\n",vars->player.endian, vars->player.bits_per_pixel);
+	mlx_put_image_to_window(vars->mlx, vars->win,
+		vars->remove_old_chr.img_ptr, vars->player.x, vars->player.y);
 }
 
 void	ft_put_img64(t_vars *vars)
 {
 	mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->walls.img_ptr, 0,0);
+		vars->walls.img_ptr, 0, 0);
 }
 
-void counter_draw(t_vars *vars){
-	char *str = ft_itoa(vars->counter);
+void	counter_draw(t_vars *vars)
+{
+	char	*str;
+
+	str = ft_itoa(vars->counter);
 	ft_put_img64(vars);
 	mlx_string_put(vars->mlx, vars->win, 25, 28, 0xFFFFFF, str);
 	free(str);

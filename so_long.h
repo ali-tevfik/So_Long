@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 14:26:11 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/03 22:10:38 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/05 19:17:26 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_vars
 	t_img	exit;
 	t_img	collection;
 	t_img	remove_old_chr;
+	t_img	open_exit;
 	char	**maps;
 	int		game_speed;
 	int		total_eat;
@@ -51,7 +52,6 @@ typedef struct s_vars
 
 void	change_maps(t_vars *vars, int keycode);
 void	change_position(t_vars *vars, int keycode);
-void	clean_old_image(t_vars *vars);
 int		main(int argc, char **argv);
 int		close_a(int keycode, t_vars *vars);
 int		check_position(t_vars *vars, int a, int b);
@@ -71,7 +71,7 @@ void	eat(t_vars *vars, int keycode);
 int		check_len_maps(int argc, char **argv, int fd);
 int		step_find(char **argv);
 int		line_len(char **argv);
-int		check_player(char** argv);
+int		check_player(char **argv);
 int		close_clikl(t_vars *vars);
 void	counter_draw(t_vars *vars);
 #endif

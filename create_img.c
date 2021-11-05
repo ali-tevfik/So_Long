@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/01 13:47:45 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/03 22:31:16 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/05 19:10:16 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	create_fish_img(t_vars *vars, int x, int y)
 {
 	char	*img_path;
 
-	img_path = "image/player.xpm";
+	img_path = "image/exit.xpm";
 	vars->player.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path,
 			&vars->player.img_width, &vars->player.len_height);
 	vars->player.address = mlx_get_data_addr(vars->player.img_ptr,
 			&vars->player.bits_per_pixel,
 			&vars->player.line_size,
 			&vars->player.endian);
-	vars->player.x = x * vars->walls.len_height;
+	vars->player.x = x * vars->walls.img_width;
 	vars->player.y = y * vars->walls.len_height;
 	mlx_put_image_to_window (vars->mlx, vars->win,
 		vars->player.img_ptr, vars->player.x, vars->player.y);
@@ -51,7 +51,7 @@ void	create_exit(t_vars *vars, int x, int y)
 {
 	char	*img_path;
 
-	img_path = "image/exit.xpm";
+	img_path = "image/stone.xpm";
 	vars->exit.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path,
 			&vars->exit.img_width, &vars->exit.len_height);
 	vars->exit.address = mlx_get_data_addr(vars->exit.img_ptr,
@@ -68,7 +68,6 @@ void	create_walls(t_vars *vars, int x, int y)
 	char	*img_path;
 
 	img_path = "image/walls.xpm";
-
 	vars->walls.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path,
 			&vars->walls.img_width, &vars->walls.len_height);
 	vars->walls.address = mlx_get_data_addr(vars->walls.img_ptr,

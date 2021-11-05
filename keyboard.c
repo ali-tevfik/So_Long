@@ -6,11 +6,54 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 20:35:41 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/03 22:10:28 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/05 19:20:39 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+void	create_new_exit(t_vars *vars)
+{
+	char	*img_path;
+
+	img_path = "image/ladder.xpm";
+	vars->open_exit.img_ptr = mlx_xpm_file_to_image(vars->mlx, img_path,
+			&vars->open_exit.img_width, &vars->open_exit.len_height);
+	vars->open_exit.address = mlx_get_data_addr(vars->open_exit.img_ptr,
+			&vars->open_exit.bits_per_pixel,
+			&vars->open_exit.line_size, &vars->open_exit.endian);
+	vars->open_exit.x = vars->exit.x;
+	vars->open_exit.y = vars->exit.y;
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->open_exit.img_ptr,
+		vars->open_exit.x, vars->open_exit.y);
+}
+
+void	clean_old_exit(t_vars *vars)
+{
+	int	a;
+	int	b;
+
+	a = 0;
+	vars->remove_old_chr.img_ptr = mlx_new_image(vars->mlx,
+			vars->exit.img_width, vars->exit.len_height);
+	vars->remove_old_chr.address = mlx_get_data_addr(
+			vars->remove_old_chr.img_ptr,
+			&vars->remove_old_chr.bits_per_pixel,
+			&vars->remove_old_chr.line_size,
+			&vars->remove_old_chr.endian);
+	while (a < vars->exit.img_width)
+	{
+		b = 0;
+		while (b < vars->exit.len_height)
+		{
+			my_mlx_pixel_put(&vars->remove_old_chr, a, b, 0XADD8E6);
+			b++;
+		}
+		a++;
+	}
+	mlx_put_image_to_window(vars->mlx, vars->win,
+		vars->remove_old_chr.img_ptr, vars->exit.x, vars->exit.y);
+	create_new_exit(vars);
+}
 
 void	result_func(t_vars *vars, int keycode, int result)
 {
@@ -28,9 +71,19 @@ void	result_func(t_vars *vars, int keycode, int result)
 	{
 		change_maps(vars, keycode);
 		vars->ate++;
+		printf("%d ate\n", vars->ate);
 		eat(vars, keycode);
+		if (vars->ate == vars->total_eat)
+			printf("all ate\n");
+		if (vars->ate == vars->total_eat)
+			clean_old_exit(vars);
 		change_position(vars, keycode);
 	}
+}
+
+void	write_terminal(t_vars *vars)
+{
+	printf("step %d\n", vars->counter);
 }
 
 int	close_a(int keycode, t_vars *vars)
@@ -39,6 +92,7 @@ int	close_a(int keycode, t_vars *vars)
 
 	vars->counter++;
 	counter_draw(vars);
+	write_terminal(vars);
 	if (keycode == 53)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);

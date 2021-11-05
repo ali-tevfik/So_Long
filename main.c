@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/03 21:52:32 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/05 19:15:40 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,11 @@ int	main(int argc, char **argv)
 		control_map = check_player(argv);
 	if (control_map == -1)
 	{
-		ft_putendl_fd("Maps Crash\n",0);
+		printf("Maps Crash\n");
 		exit(0);
 	}
 	step = step_find(argv);
 	start_fd = open(argv[1], O_RDONLY);
 	len = line_len(argv);
 	start_draw(start_fd, step, len);
-
 }

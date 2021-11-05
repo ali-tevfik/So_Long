@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/02 16:07:36 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/03 15:09:34 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/05 19:09:53 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_line_maps(char *read_data, int step)
 	while (control_map == 0 && read_data[i])
 	{
 		if (read_data[i] == '0' || read_data[i] == '1' || read_data[i] == 'C'
-		|| read_data[i] == 'P' || read_data[i] == 'E')
+			|| read_data[i] == 'P' || read_data[i] == 'E')
 			control_map = 0;
 		else
 			control_map = -1;
