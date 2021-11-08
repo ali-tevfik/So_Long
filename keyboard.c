@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 20:35:41 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/05 19:20:39 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/08 21:42:36 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,28 @@ void	clean_old_exit(t_vars *vars)
 	create_new_exit(vars);
 }
 
+void	write_terminal(t_vars *vars, int result)
+{
+	if (result == 1 || result == 0)
+	{
+		vars->counter++;
+		counter_draw(vars);
+		printf("step %d\n", vars->counter);
+	}
+	else if (vars->ate == vars->total_eat && result == -2)
+	{
+		printf("\n\n////////////////////////////////////////////////////\n");
+		printf("////////////////////////////////////////////////////\n");
+		printf("////////////////////////////////////////////////////\n");
+		printf("////////////  Finished Game.  //////////////////////\n");
+		printf("////////////  Total steps = %d  ////////////////////\n",
+			vars->counter);
+		printf("////////////////////////////////////////////////////\n");
+		printf("////////////////////////////////////////////////////\n");
+		printf("////////////////////////////////////////////////////\n\n\n");
+	}
+}
+
 void	result_func(t_vars *vars, int keycode, int result)
 {
 	if (result == 0)
@@ -64,6 +86,7 @@ void	result_func(t_vars *vars, int keycode, int result)
 		if (vars->ate == vars->total_eat)
 		{
 			change_position(vars, keycode);
+			write_terminal(vars, result);
 			exit_game(vars);
 		}
 	}
@@ -79,20 +102,13 @@ void	result_func(t_vars *vars, int keycode, int result)
 			clean_old_exit(vars);
 		change_position(vars, keycode);
 	}
-}
-
-void	write_terminal(t_vars *vars)
-{
-	printf("step %d\n", vars->counter);
+	write_terminal(vars, result);
 }
 
 int	close_a(int keycode, t_vars *vars)
 {
 	int	result;
 
-	vars->counter++;
-	counter_draw(vars);
-	write_terminal(vars);
 	if (keycode == 53)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
