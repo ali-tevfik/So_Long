@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 14:26:11 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/08 21:21:25 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/08 21:25:57 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour);
 void	check_format(char *data);
 void	error_txt(char *error_txt);
 void	exit_game(t_vars *vars);
-void	create_fish_img(t_vars *vars, int x, int y);
+void	create_player(t_vars *vars, int x, int y);
 void	create_collection(t_vars *vars, int x, int y);
 void	eat(t_vars *vars, int keycode);
 void	check_maps(int argc, char **argv, int fd);

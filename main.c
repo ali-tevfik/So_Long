@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/08 21:20:58 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/08 21:25:58 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_vars	maps_load(char *read_data, t_vars vars, int x)
 		if (read_data[a] == '1')
 			create_walls(&vars, a, x);
 		else if (read_data[a] == 'P')
-			create_fish_img(&vars, a, x);
+			create_player(&vars, a, x);
 		else if (read_data[a] == 'C')
 			create_collection(&vars, a, x);
 		else if (read_data[a] == 'E')

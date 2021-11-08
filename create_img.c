@@ -6,13 +6,13 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/01 13:47:45 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/08 15:53:51 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/08 21:25:56 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	create_fish_img(t_vars *vars, int x, int y)
+void	create_player(t_vars *vars, int x, int y)
 {
 	char	*img_path;
 
