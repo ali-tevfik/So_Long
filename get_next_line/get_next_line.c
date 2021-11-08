@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/18 19:44:42 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/01 20:17:44 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/08 21:23:58 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*update_old_string(char *old_string)
 	if (arr_digit.result == 1)
 	{
 		tmp = ft_substr(old_string, arr_digit.where + 1,
-			ft_strlen(old_string + arr_digit.where));
+				ft_strlen(old_string + arr_digit.where));
 	}
 	else
 		tmp = NULL;

@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 11:27:29 by adoner        #+#    #+#                 */
-/*   Updated: 2020/11/16 13:01:05 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/08 21:22:53 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	i = 0;
 	totallen = ft_strlen(s1) + ft_strlen(s2);
-	c = (char*)malloc(sizeof(char) * (totallen + 1));
+	c = (char *)malloc(sizeof(char) * (totallen + 1));
 	if (!c)
 		return (NULL);
 	while (*s1 != '\0')

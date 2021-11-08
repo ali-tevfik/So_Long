@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/01 19:40:30 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/08 15:56:37 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/08 21:15:29 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	exit_game(t_vars *vars)
 	int	i;
 
 	i = 0;
-	while (vars->maps[i])
+	while (vars->map_info.maps[i])
 	{
-		free(vars->maps[i]);
+		free(vars->map_info.maps[i]);
 		i++;
 	}
-	if (vars->maps)
-		free(vars->maps);
+	if (vars->map_info.maps)
+		free(vars->map_info.maps);
 	exit (0);
 }

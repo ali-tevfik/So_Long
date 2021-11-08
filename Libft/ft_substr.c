@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 11:28:23 by adoner        #+#    #+#                 */
-/*   Updated: 2021/02/24 22:51:43 by catalina      ########   odam.nl         */
+/*   Updated: 2021/11/08 21:22:08 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static	char	*biggerstart(void)
 {
 	char	*c;
 
-	c = (char*)malloc(sizeof(char) * 1);
+	c = (char *)malloc(sizeof(char) * 1);
 	if (!c)
 		return (NULL);
 	*c = '\0';
@@ -36,7 +36,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	if (len_s < start)
 		return (biggerstart());
-	c = (char*)malloc(sizeof(char) * (len + 1));
+	c = (char *)malloc(sizeof(char) * (len + 1));
 	if (!c)
 		return (NULL);
 	while (*(s + start) != '\0' && len != 0)

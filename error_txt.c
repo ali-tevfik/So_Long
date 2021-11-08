@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/02 17:00:45 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/08 16:21:18 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/08 21:20:18 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	error_txt(char *error_txt)
 	printf("%s\n", error_txt);
 }
 
-int	check_error_and_write(t_map maps)
+int	check_chr(t_map maps)
 {
 	if (maps.player == 1 && maps.collection > 0 && maps.exit == 1)
 		return (0);
@@ -27,5 +27,22 @@ int	check_error_and_write(t_map maps)
 		printf("Error Collection!\n");
 	if (maps.exit != 1)
 		printf("Error Exit!");
-	return (-1);
+	exit(0);
+}
+
+int	check_map_len(int i, char *data)
+{
+	if (i == 0)
+		return (0);
+	free(data);
+	printf("Error Maps!\n");
+	exit(0);
+}
+
+int	result_check(int result)
+{
+	if (result == 0)
+		return (0);
+	printf("Error Maps!\n");
+	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 14:26:11 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/08 16:20:36 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/08 21:21:25 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,16 @@ typedef struct s_img
 	int		y;
 }			t_img;
 
+typedef struct s_map
+{
+	int		player;
+	int		collection;
+	int		exit;
+	int		line;
+	int		len;
+	char	**maps;
+}			t_map;
+
 typedef struct s_vars
 {
 	void	*mlx;
@@ -43,22 +53,15 @@ typedef struct s_vars
 	t_img	collection;
 	t_img	remove_old_chr;
 	t_img	open_exit;
-	char	**maps;
 	int		game_speed;
 	int		total_eat;
 	int		counter;
 	int		ate;
+	t_map	map_info;
 }			t_vars;
 
-typedef struct s_map
-{
-	int		player;
-	int		collection;
-	int		exit;
-}			t_map;
-
 void	change_maps(t_vars *vars, int keycode);
-int		check_error_and_write(t_map maps);
+int		check_chr(t_map maps);
 void	change_position(t_vars *vars, int keycode);
 int		main(int argc, char **argv);
 int		close_a(int keycode, t_vars *vars);
@@ -76,10 +79,10 @@ void	exit_game(t_vars *vars);
 void	create_fish_img(t_vars *vars, int x, int y);
 void	create_collection(t_vars *vars, int x, int y);
 void	eat(t_vars *vars, int keycode);
-int		check_len_maps(int argc, char **argv, int fd);
-int		step_find(char **argv);
-int		line_len(char **argv);
-int		check_maps(char **argv);
+void	check_maps(int argc, char **argv, int fd);
 int		close_clikl(t_vars *vars);
 void	counter_draw(t_vars *vars);
+int		check_map_len(int i, char *data);
+int		result_check(int result);
+t_map	find_info_maps(char **argv);
 #endif

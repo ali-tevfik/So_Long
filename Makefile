@@ -15,7 +15,7 @@ SRCS	=	get_next_line/get_next_line.c\
 			check_position.c\
 			create_img.c\
 			change_maps.c\
-			check_input.c
+			find_info_maps.c
 
 OBJS	= $(SRCS:.c=.o)
 
