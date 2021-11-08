@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/02 16:07:36 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/05 19:09:53 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/08 16:20:48 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,14 +95,16 @@ int	line_len(char **argv)
 	return (len);
 }
 
-int	check_player(char **argv)
+int	check_maps(char **argv)
 {
 	char	*read_data;
 	int		i;
 	int		fd;
-	int		counter;
+	t_map	maps;
 
-	counter = 0;
+	maps.collection = 0;
+	maps.exit = 0;
+	maps.player = 0;
 	fd = open(argv[1], O_RDONLY);
 	while (get_next_line(fd, &read_data) > 0)
 	{
@@ -110,11 +112,13 @@ int	check_player(char **argv)
 		while (read_data[i])
 		{
 			if (read_data[i] == 'P')
-				counter++;
+				maps.player++;
+			else if (read_data[i] == 'E')
+				maps.exit++;
+			else if (read_data[i] == 'C')
+				maps.collection++;
 			i++;
 		}
 	}
-	if (counter == 1)
-		return (0);
-	return (-1);
+	return (check_error_and_write(maps));
 }

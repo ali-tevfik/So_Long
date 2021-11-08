@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/05 19:15:40 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/08 16:21:51 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_vars	maps_load(char *read_data, t_vars vars, int x)
 
 	a = 0;
 	vars.maps[x] = ft_strdup(read_data);
-	if (vars.maps[x] == NULL)
+	if (!vars.maps)
 		exit_game(&vars);
 	while (read_data[a])
 	{
@@ -44,6 +44,8 @@ void	start_draw(int fd, int step, int len)
 
 	vars.counter = 0;
 	vars.maps = (char **) malloc(sizeof(vars.maps) * step);
+	if (!vars.maps)
+		exit_game(&vars);
 	x = 0;
 	i = 1;
 	vars.game_speed = 64;
@@ -72,15 +74,15 @@ int	main(int argc, char **argv)
 
 	fd = open(argv[1], O_RDONLY);
 	control_map = check_len_maps(argc, argv, fd);
-	if (control_map == 0)
-		control_map = check_player(argv);
 	if (control_map == -1)
-	{
-		printf("Maps Crash\n");
+		printf("Error Maps!\n");
+	if (control_map == 0)
+		control_map = check_maps(argv);
+	if (control_map == -1)
 		exit(0);
-	}
 	step = step_find(argv);
 	start_fd = open(argv[1], O_RDONLY);
 	len = line_len(argv);
 	start_draw(start_fd, step, len);
+	 getchar();
 }

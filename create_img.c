@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/01 13:47:45 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/05 19:10:16 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/08 15:53:51 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	create_win(t_vars *vars, int x, int y)
 
 	a = 0;
 	vars->mlx = mlx_init();
-	vars->win = mlx_new_window(vars->mlx, x * 64, (y + 1) * 64, "TEMEL REIS!");
+	vars->win = mlx_new_window(vars->mlx, x * 64, (y + 1) * 64, "POKEMONN!");
 	vars->background.img_ptr = mlx_new_image(vars->mlx, x * 64, y * 64);
 	vars->background.address = mlx_get_data_addr(vars->background.img_ptr,
 			&vars->background.bits_per_pixel,

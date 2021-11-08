@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 14:26:11 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/05 19:17:26 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/08 16:20:36 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,15 @@ typedef struct s_vars
 	int		ate;
 }			t_vars;
 
+typedef struct s_map
+{
+	int		player;
+	int		collection;
+	int		exit;
+}			t_map;
+
 void	change_maps(t_vars *vars, int keycode);
+int		check_error_and_write(t_map maps);
 void	change_position(t_vars *vars, int keycode);
 int		main(int argc, char **argv);
 int		close_a(int keycode, t_vars *vars);
@@ -71,7 +79,7 @@ void	eat(t_vars *vars, int keycode);
 int		check_len_maps(int argc, char **argv, int fd);
 int		step_find(char **argv);
 int		line_len(char **argv);
-int		check_player(char **argv);
+int		check_maps(char **argv);
 int		close_clikl(t_vars *vars);
 void	counter_draw(t_vars *vars);
 #endif
