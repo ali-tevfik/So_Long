@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/08 21:25:58 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/09 12:18:27 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,16 @@ int	main(int argc, char **argv)
 	t_map	map_info;
 	int		fd;
 
+	if (argc == 1)
+	{
+		printf("Please maps!\n");
+		return (-1);
+	}
+	if (argc != 2)
+	{
+		printf("2 Maps Error\n");
+		return (-1);
+	}
 	fd = open(argv[1], O_RDONLY);
 	check_maps(argc, argv, fd);
 	map_info = find_info_maps(argv);

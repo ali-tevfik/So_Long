@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 14:26:11 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/08 21:25:57 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/09 12:16:17 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include "Libft/libft.h"
+# include "libft/libft.h"
 
 typedef struct s_img
 {
@@ -85,4 +85,5 @@ void	counter_draw(t_vars *vars);
 int		check_map_len(int i, char *data);
 int		result_check(int result);
 t_map	find_info_maps(char **argv);
+void	counter_draw(t_vars *vars);
 #endif
