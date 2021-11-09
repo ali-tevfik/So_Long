@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/01 19:40:30 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/09 12:22:32 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/09 14:18:42 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ void	exit_game(t_vars *vars)
 	}
 	if (vars->map_info.maps)
 		free(vars->map_info.maps);
+	while(1){}
 	exit (0);
+
 }

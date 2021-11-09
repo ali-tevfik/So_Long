@@ -28,7 +28,7 @@ NAME	= so_long
 
 GCC		= gcc
 
-FLAGS	= -Wall -Wextra -Werror -fsanitize=address -g
+FLAGS	= -Wall -Wextra -Werror
 
 HEADER_FILE = so_long.h
 

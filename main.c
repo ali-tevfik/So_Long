@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/09 12:18:27 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/09 14:16:44 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	start_draw(int fd, int step, int len)
 	t_vars	vars;
 
 	vars.counter = 0;
-	vars.map_info.maps = (char **) malloc(sizeof(vars.map_info.maps) * step);
+	vars.map_info.maps = (char **) malloc(sizeof(vars.map_info.maps) * (step + 1));
 	if (!vars.map_info.maps)
 		exit_game(&vars);
 	x = 0;
@@ -56,6 +56,7 @@ void	start_draw(int fd, int step, int len)
 	{
 		i = get_next_line(fd, &read_data);
 		vars = maps_load(read_data, vars, x);
+		free(read_data);
 		x++;
 	}
 	vars.map_info.maps[x] = NULL;
