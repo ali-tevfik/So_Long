@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/01 13:47:45 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/08 21:25:56 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/10 12:07:48 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	create_player(t_vars *vars, int x, int y)
 	vars->player.y = y * vars->walls.len_height;
 	mlx_put_image_to_window (vars->mlx, vars->win,
 		vars->player.img_ptr, vars->player.x, vars->player.y);
+	vars->counter = 0;
+	counter_draw(vars);
 }
 
 void	create_collection(t_vars *vars, int x, int y)

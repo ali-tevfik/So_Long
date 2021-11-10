@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 20:35:41 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/09 11:36:50 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/10 12:06:07 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	result_func(t_vars *vars, int keycode, int result)
 	write_terminal(vars, result);
 }
 
-int	close_a(int keycode, t_vars *vars)
+int	click_button(int keycode, t_vars *vars)
 {
 	int	result;
 

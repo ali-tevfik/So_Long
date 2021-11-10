@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 14:26:11 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/09 12:16:17 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/10 12:06:48 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include "libft/libft.h"
+# include "Libft/libft.h"
 
 typedef struct s_img
 {
@@ -64,7 +64,7 @@ void	change_maps(t_vars *vars, int keycode);
 int		check_chr(t_map maps);
 void	change_position(t_vars *vars, int keycode);
 int		main(int argc, char **argv);
-int		close_a(int keycode, t_vars *vars);
+int		click_button(int keycode, t_vars *vars);
 int		check_position(t_vars *vars, int a, int b);
 void	create_walls(t_vars *vars, int x, int y);
 int		check_up_down(char *data);
@@ -80,7 +80,7 @@ void	create_player(t_vars *vars, int x, int y);
 void	create_collection(t_vars *vars, int x, int y);
 void	eat(t_vars *vars, int keycode);
 void	check_maps(int argc, char **argv, int fd);
-int		close_clikl(t_vars *vars);
+int		close_clik(t_vars *vars);
 void	counter_draw(t_vars *vars);
 int		check_map_len(int i, char *data);
 int		result_check(int result);

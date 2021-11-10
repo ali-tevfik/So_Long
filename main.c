@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/09 14:16:44 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/10 12:02:45 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ void	start_draw(int fd, int step, int len)
 	int		x;
 	t_vars	vars;
 
-	vars.counter = 0;
-	vars.map_info.maps = (char **) malloc(sizeof(vars.map_info.maps) * (step + 1));
+	vars.map_info.maps = (char **) malloc(sizeof(vars.map_info.maps) * step);
 	if (!vars.map_info.maps)
 		exit_game(&vars);
 	x = 0;
@@ -60,8 +59,8 @@ void	start_draw(int fd, int step, int len)
 		x++;
 	}
 	vars.map_info.maps[x] = NULL;
-	mlx_hook(vars.win, 2, 0, close_a, &vars);
-	mlx_hook(vars.win, 17, 0, close_clikl, &vars);
+	mlx_hook(vars.win, 2, 0, click_button, &vars);
+	mlx_hook(vars.win, 17, 0, close_clik, &vars);
 	mlx_loop(vars.mlx);
 }
 
@@ -86,6 +85,6 @@ int	main(int argc, char **argv)
 	check_maps(argc, argv, fd);
 	map_info = find_info_maps(argv);
 	start_fd = open(argv[1], O_RDONLY);
-	start_draw(start_fd, map_info.line, map_info.len);
+	start_draw(start_fd, map_info.line + 1, map_info.len);
 	return (0);
 }
