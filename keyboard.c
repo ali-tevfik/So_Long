@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 20:35:41 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/10 12:06:07 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/12 11:29:08 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	result_func(t_vars *vars, int keycode, int result)
 		printf("%d ate\n", vars->ate);
 		eat(vars, keycode);
 		if (vars->ate == vars->total_eat)
-			printf("all ate\n");
+			printf("all ate\nopen exit\n");
 		if (vars->ate == vars->total_eat)
 			clean_old_exit(vars);
 		change_position(vars, keycode);

@@ -6,16 +6,11 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/02 17:00:45 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/08 21:20:18 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/12 11:28:22 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	error_txt(char *error_txt)
-{
-	printf("%s\n", error_txt);
-}
 
 int	check_chr(t_map maps)
 {

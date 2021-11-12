@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 14:26:11 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/10 12:06:48 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/12 11:28:27 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,11 @@ void	create_win(t_vars *vars, int x, int y);
 int		check_exit(t_vars *vars, int keycode);
 void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int colour);
 void	check_format(char *data);
-void	error_txt(char *error_txt);
 void	exit_game(t_vars *vars);
 void	create_player(t_vars *vars, int x, int y);
 void	create_collection(t_vars *vars, int x, int y);
 void	eat(t_vars *vars, int keycode);
-void	check_maps(int argc, char **argv, int fd);
+void	check_maps(int argc, char **argv, int fd, int line);
 int		close_clik(t_vars *vars);
 void	counter_draw(t_vars *vars);
 int		check_map_len(int i, char *data);

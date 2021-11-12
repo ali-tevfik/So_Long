@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/31 17:21:20 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/10 12:02:45 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/12 11:27:30 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	start_draw(int fd, int step, int len)
 	vars.game_speed = 64;
 	vars.ate = 0;
 	vars.total_eat = 0;
-	create_win(&vars, len, step - 1);
+	create_win(&vars, len, step - 3);
 	while (i > 0)
 	{
 		i = get_next_line(fd, &read_data);
@@ -82,9 +82,9 @@ int	main(int argc, char **argv)
 		return (-1);
 	}
 	fd = open(argv[1], O_RDONLY);
-	check_maps(argc, argv, fd);
 	map_info = find_info_maps(argv);
+	check_maps(argc, argv, fd, map_info.line);
 	start_fd = open(argv[1], O_RDONLY);
-	start_draw(start_fd, map_info.line + 1, map_info.len);
+	start_draw(start_fd, map_info.line + 2, map_info.len);
 	return (0);
 }

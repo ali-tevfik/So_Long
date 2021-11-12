@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/02 16:37:31 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/08 21:19:55 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/12 11:06:42 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ int	check_left_right(char *data)
 	return (-1);
 }
 
-int	check_line_chr(char *read_data, int step)
+int	check_line_chr(char *read_data, int step, int line)
 {
 	int	control_map;
 	int	i;
 
 	i = 0;
 	control_map = 0;
-	if (step == 0)
+	if (step == 0 || step == line - 1)
 		control_map = check_up_down(read_data);
 	else
 		control_map = check_left_right(read_data);
@@ -79,7 +79,7 @@ t_map	check_maps_chr(char *data, t_map maps)
 	return (maps);
 }
 
-void	check_maps(int argc, char **argv, int fd)
+void	check_maps(int argc, char **argv, int fd, int line)
 {
 	int		i;
 	char	*data;
@@ -94,7 +94,7 @@ void	check_maps(int argc, char **argv, int fd)
 	while (get_next_line(fd, &data) > 0)
 	{
 		maps = check_maps_chr(data, maps);
-		check_line_chr(data, i);
+		check_line_chr(data, i, line);
 		if (i == 0)
 			len = ft_strlen(data);
 		else
