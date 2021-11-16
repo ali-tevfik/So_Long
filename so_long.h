@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 14:26:11 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/12 11:28:27 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/16 10:57:04 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	change_maps(t_vars *vars, int keycode);
 int		check_chr(t_map maps);
 void	change_position(t_vars *vars, int keycode);
 int		main(int argc, char **argv);
-int		click_button(int keycode, t_vars *vars);
+void	click_button(int keycode, t_vars *vars);
 int		check_position(t_vars *vars, int a, int b);
 void	create_walls(t_vars *vars, int x, int y);
 int		check_up_down(char *data);

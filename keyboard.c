@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 20:35:41 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/12 11:29:08 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/16 10:58:46 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	result_func(t_vars *vars, int keycode, int result)
 	write_terminal(vars, result);
 }
 
-int	click_button(int keycode, t_vars *vars)
+void	click_button(int keycode, t_vars *vars)
 {
 	int	result;
 
@@ -122,5 +122,7 @@ int	click_button(int keycode, t_vars *vars)
 		result = check_position(vars, -1, 0);
 	else if (keycode == 126 || keycode == 13)
 		result = check_position(vars, 1, 0);
+	else
+		return ;
 	result_func(vars, keycode, result);
 }
