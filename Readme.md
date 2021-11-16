@@ -4,7 +4,6 @@ The idea is to create a 2D game with the help of the minilibX and X11 graphic se
 
 This project only works on Linux and WSL, make sur you have installed the required elements to run the minilibX. For more information, check : [https://github.com/42Paris/minilibx-linux](https://github.com/42Paris/minilibx-linux)
 
-![gif](https://user-images.githubusercontent.com/25388772/142031348-110f40c6-0da6-4d4a-add8-da01a1b9af43.gif)
 
 
 | Character | Object |
@@ -23,3 +22,6 @@ You can use `AWSD` to move `UP`, `DOWN`, `LEFT`, `RIGHT`.For restart the g
 
 - Make
 - ./So_long maps/[any .ber map respecting the criterias]
+
+
+![gif](https://user-images.githubusercontent.com/25388772/142031348-110f40c6-0da6-4d4a-add8-da01a1b9af43.gif)
