@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/02 16:37:31 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/23 14:06:40 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/23 15:27:33 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_left_right(char *data)
 	return (-1);
 }
 
-void	check_line_chr(char *read_data, int step, int line)
+void	check_line_chr(char **read_data, int step, int line)
 {
 	int	control_map;
 	int	i;
@@ -46,13 +46,14 @@ void	check_line_chr(char *read_data, int step, int line)
 	i = 0;
 	control_map = 0;
 	if (step == 0 || step == line - 1)
-		control_map = check_up_down(read_data);
+		control_map = check_up_down(*read_data);
 	else
-		control_map = check_left_right(read_data);
-	while (control_map == 0 && read_data[i])
+		control_map = check_left_right(read_data[step]);
+	while (control_map == 0 && read_data[step][i])
 	{
-		if (read_data[i] == '0' || read_data[i] == '1' || read_data[i] == 'C'
-			|| read_data[i] == 'P' || read_data[i] == 'E')
+		if (read_data[step][i] == '0' || read_data[step][i] == '1'
+			|| read_data[step][i] == 'C'
+			|| read_data[step][i] == 'P' || read_data[step][i] == 'E')
 			control_map = 0;
 		else
 			control_map = -1;
@@ -93,13 +94,13 @@ void	check_maps(char **data, int line)
 	while (data[i])
 	{
 		maps = check_maps_chr(data[i], maps);
-		check_line_chr(data[i], i, line);
+		check_line_chr(data, i, line);
 		if (i == 0)
 			len = ft_strlen(data[i]);
 		else
 			result = len - ft_strlen(data[i]);
-		result_check(result);
+		result_check(result, data);
 		i++;
 	}
-	check_chr(maps);
+	check_chr(maps, data);
 }

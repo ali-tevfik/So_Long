@@ -16,7 +16,8 @@ SRCS	=	get_next_line/get_next_line.c\
 			create_img.c\
 			change_maps.c\
 			find_info_maps.c\
-			screen_write.c
+			screen_write.c\
+			load_data.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -47,7 +48,7 @@ $(NAME):	$(OBJS)
 
 %.o: %.c $(HEADER_FILE)
 	@echo "$(GREEN)Compiling:$(NORMAL)"
-	$(GCC) -c $< -o $(<:.c=.o)
+	$(GCC) $(FLAGS) -c $< -o $(<:.c=.o)
 	@echo "$(GREEN)Successfully compiled!$(NORMAL)"
 
 clean:

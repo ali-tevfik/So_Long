@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 20:35:41 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/23 14:22:32 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/23 14:59:32 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int	click_button(int keycode, t_vars *vars)
 	else if (keycode == UP || keycode == W)
 		result = check_position(vars, 1, 0);
 	else
-		return(0);
+		return (0);
 	result_func(vars, keycode, result);
 	return (0);
 }

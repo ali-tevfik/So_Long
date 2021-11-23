@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/25 16:39:47 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/23 14:28:27 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/23 14:57:16 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	check_position(t_vars *vars, int a, int b)
 	int	x;
 	int	y;
 
-
-	printf("x %d y %d maps %c\n\n",vars->player.x ,vars->player.y,vars->map_info.maps[0][0]);
 	x = vars->player.x / 64;
 	y = vars->player.y / 64;
 	if (vars->map_info.maps[y - a][x - b] == '1')

@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 14:26:11 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/23 14:05:11 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/23 15:18:57 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define W 13
 # define D 2
 # define S 1
-#define A 0
+# define A 0
 
 typedef struct s_img
 {
@@ -71,7 +71,7 @@ typedef struct s_vars
 }			t_vars;
 
 void	change_maps(t_vars *vars, int keycode);
-int		check_chr(t_map maps);
+int		check_chr(t_map maps, char **data);
 void	change_position(t_vars *vars, int keycode);
 int		main(int argc, char **argv);
 int		click_button(int keycode, t_vars *vars);
@@ -91,9 +91,10 @@ void	eat(t_vars *vars, int keycode);
 void	check_maps(char **data, int line);
 int		close_clik(t_vars *vars);
 void	counter_draw(t_vars *vars);
-int		check_map_len(int i, char *data);
-int		result_check(int result);
+int		check_map_len(int i, char **data);
+int		result_check(int result, char **data);
 t_map	find_info_maps(char **argv);
 void	clean_old_image(t_vars *vars);
 void	counter_draw(t_vars *vars);
+char	**load_data(char **argv, t_map map_info);
 #endif
