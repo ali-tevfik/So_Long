@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/08 20:35:41 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/16 10:58:46 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/23 14:22:32 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	result_func(t_vars *vars, int keycode, int result)
 	write_terminal(vars, result);
 }
 
-void	click_button(int keycode, t_vars *vars)
+int	click_button(int keycode, t_vars *vars)
 {
 	int	result;
 
@@ -114,15 +114,16 @@ void	click_button(int keycode, t_vars *vars)
 		mlx_destroy_window(vars->mlx, vars->win);
 		exit_game(vars);
 	}
-	if (keycode == 124 || keycode == 2)
+	if (keycode == RIGHT || keycode == D)
 		result = check_position(vars, 0, -1);
-	else if (keycode == 123 || keycode == 0)
+	else if (keycode == LEFT || keycode == A)
 		result = check_position(vars, 0, 1);
-	else if (keycode == 125 || keycode == 1)
+	else if (keycode == DOWN || keycode == S)
 		result = check_position(vars, -1, 0);
-	else if (keycode == 126 || keycode == 13)
+	else if (keycode == UP || keycode == W)
 		result = check_position(vars, 1, 0);
 	else
-		return ;
+		return(0);
 	result_func(vars, keycode, result);
+	return (0);
 }

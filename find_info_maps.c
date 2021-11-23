@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/02 16:07:36 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/08 21:20:29 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/23 13:50:37 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ t_map	find_info_maps(char **argv)
 	map_info.line = 0;
 	while (get_next_line(fd, &read_data) > 0)
 	{
+		if (!read_data)
+			exit(0);
 		map_info.len = ft_strlen(read_data);
 		free (read_data);
 		map_info.line++;

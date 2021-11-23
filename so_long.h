@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 14:26:11 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/16 10:57:04 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/23 14:05:11 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include "Libft/libft.h"
+
+# define ESC 53
+# define UP 126
+# define RIGHT 124
+# define DOWN 125
+# define LEFT 123
+# define W 13
+# define D 2
+# define S 1
+#define A 0
 
 typedef struct s_img
 {
@@ -64,7 +74,7 @@ void	change_maps(t_vars *vars, int keycode);
 int		check_chr(t_map maps);
 void	change_position(t_vars *vars, int keycode);
 int		main(int argc, char **argv);
-void	click_button(int keycode, t_vars *vars);
+int		click_button(int keycode, t_vars *vars);
 int		check_position(t_vars *vars, int a, int b);
 void	create_walls(t_vars *vars, int x, int y);
 int		check_up_down(char *data);
@@ -78,11 +88,12 @@ void	exit_game(t_vars *vars);
 void	create_player(t_vars *vars, int x, int y);
 void	create_collection(t_vars *vars, int x, int y);
 void	eat(t_vars *vars, int keycode);
-void	check_maps(int argc, char **argv, int fd, int line);
+void	check_maps(char **data, int line);
 int		close_clik(t_vars *vars);
 void	counter_draw(t_vars *vars);
 int		check_map_len(int i, char *data);
 int		result_check(int result);
 t_map	find_info_maps(char **argv);
+void	clean_old_image(t_vars *vars);
 void	counter_draw(t_vars *vars);
 #endif

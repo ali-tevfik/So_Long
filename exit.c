@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/01 19:40:30 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/12 11:10:13 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/23 14:28:45 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	close_clik(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	exit_game(vars);
+	return (0);
 }
 
 void	exit_game(t_vars *vars)
@@ -30,5 +31,6 @@ void	exit_game(t_vars *vars)
 	}
 	if (vars->map_info.maps)
 		free(vars->map_info.maps);
+	system("leaks so_long");
 	exit (0);
 }

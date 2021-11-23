@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/27 15:23:37 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/05 19:03:05 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/23 13:45:33 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	change_position(t_vars *vars, int keycode)
 {
 	clean_old_image(vars);
-	if (keycode == 123 || keycode == 0)
+	if (keycode == LEFT || keycode == A)
 		vars->player.x = vars->player.x - vars->game_speed;
-	if (keycode == 124 || keycode == 2)
+	if (keycode == RIGHT || keycode == D)
 		vars->player.x = vars->player.x + vars->game_speed;
-	if (keycode == 125 || keycode == 1)
+	if (keycode == DOWN || keycode == S)
 		vars->player.y = vars->player.y + vars->game_speed;
-	if (keycode == 126 || keycode == 13)
+	if (keycode == UP || keycode == W)
 		vars->player.y = vars->player.y - vars->game_speed;
 	mlx_put_image_to_window(vars->mlx, vars->win,
 		vars->player.img_ptr, vars->player.x, vars->player.y);
@@ -56,12 +56,12 @@ void	clear_eat(t_vars *vars, int x, int y)
 
 void	eat(t_vars *vars, int keycode)
 {
-	if (keycode == 123 || keycode == 0)
+	if (keycode == LEFT || keycode == A)
 		clear_eat(vars, vars->player.x - vars->game_speed, vars->player.y);
-	else if (keycode == 124 || keycode == 2)
+	else if (keycode == RIGHT || keycode == D)
 		clear_eat(vars, vars->player.x + vars->game_speed, vars->player.y);
-	else if (keycode == 125 || keycode == 1)
+	else if (keycode == DOWN || keycode == S)
 		clear_eat(vars, vars->player.x, vars->player.y + vars->game_speed);
-	else if (keycode == 126 || keycode == 13)
+	else if (keycode == UP || keycode == W)
 		clear_eat(vars, vars->player.x, vars->player.y - vars->game_speed);
 }

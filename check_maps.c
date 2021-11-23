@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/02 16:37:31 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/12 11:06:42 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/23 14:06:40 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_left_right(char *data)
 	return (-1);
 }
 
-int	check_line_chr(char *read_data, int step, int line)
+void	check_line_chr(char *read_data, int step, int line)
 {
 	int	control_map;
 	int	i;
@@ -79,10 +79,9 @@ t_map	check_maps_chr(char *data, t_map maps)
 	return (maps);
 }
 
-void	check_maps(int argc, char **argv, int fd, int line)
+void	check_maps(char **data, int line)
 {
 	int		i;
-	char	*data;
 	t_map	maps;
 	int		len;
 	int		result;
@@ -91,18 +90,16 @@ void	check_maps(int argc, char **argv, int fd, int line)
 	maps.exit = 0;
 	maps.player = 0;
 	i = 0;
-	while (get_next_line(fd, &data) > 0)
+	while (data[i])
 	{
-		maps = check_maps_chr(data, maps);
-		check_line_chr(data, i, line);
+		maps = check_maps_chr(data[i], maps);
+		check_line_chr(data[i], i, line);
 		if (i == 0)
-			len = ft_strlen(data);
+			len = ft_strlen(data[i]);
 		else
-			result = len - ft_strlen(data);
-		free(data);
+			result = len - ft_strlen(data[i]);
 		result_check(result);
 		i++;
 	}
-	free(data);
 	check_chr(maps);
 }
