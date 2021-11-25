@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 14:26:11 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/23 15:18:57 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/25 10:29:49 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	eat(t_vars *vars, int keycode);
 void	check_maps(char **data, int line);
 int		close_clik(t_vars *vars);
 void	counter_draw(t_vars *vars);
-int		check_map_len(int i, char **data);
 int		result_check(int result, char **data);
 t_map	find_info_maps(char **argv);
 void	clean_old_image(t_vars *vars);

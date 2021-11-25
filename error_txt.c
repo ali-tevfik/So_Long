@@ -6,7 +6,7 @@
 /*   By: catalina <catalina@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/02 17:00:45 by catalina      #+#    #+#                 */
-/*   Updated: 2021/11/23 15:27:12 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/25 10:29:45 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,6 @@ int	check_chr(t_map maps, char **data)
 	if (maps.exit != 1)
 		printf("Error Exit!");
 	free_data(data);
-	system("leaks so_long");
-	exit(0);
-}
-
-int	check_map_len(int i, char **data)
-{
-	if (i == 0)
-		return (0);
-	free_data(data);
-	printf("Error Maps!\n");
 	system("leaks so_long");
 	exit(0);
 }

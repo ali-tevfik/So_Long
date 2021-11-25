@@ -6,7 +6,7 @@
 /*   By: adoner <adoner@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 15:03:21 by adoner        #+#    #+#                 */
-/*   Updated: 2021/11/23 15:04:02 by adoner        ########   odam.nl         */
+/*   Updated: 2021/11/25 10:33:08 by adoner        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ char	**load_data(char **argv, t_map map_info)
 	int		i;
 	int		fd;
 
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		exit(0);
 	new_data = (char **)malloc(sizeof(new_data) * (map_info.line + 2));
 	if (!new_data)
 		exit(0);
-	fd = open(argv[1], O_RDONLY);
 	i = 0;
 	while (get_next_line(fd, &read_data) > 0)
 	{
